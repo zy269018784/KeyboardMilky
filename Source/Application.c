@@ -77,7 +77,6 @@ struct Application* CreateApplication()
     CreateSettingsPage(&App->PageSettings, ActiveScreen);
 
     CreateButtonLayout(App, App->PageMusic.Handle);
-    //lv_obj_set_parent(App->RowLayout, App->PageMusic.Handle);
     return App;
 }
 
@@ -117,7 +116,9 @@ void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
 
 void Run(Application* App)
 {
+    //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
     ShowPage(App, SettingPageNum, WALLPAPER_PAGE_NUM);
+
 
     while (1)
     {

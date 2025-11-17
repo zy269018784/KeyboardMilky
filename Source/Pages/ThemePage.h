@@ -7,6 +7,9 @@ typedef struct ThemePage
 	lv_obj_t* Parent;
 	lv_obj_t* Handle;
 
+	lv_obj_t* ButtonReturn;
+	lv_obj_t* LabelPageTitle;
+
 	lv_obj_t* LabelThemeTitle;
 	lv_obj_t* ImageTheme;
 

@@ -47,6 +47,13 @@ typedef struct SettingsWallpapperPage
 {
 	lv_obj_t* Handle;
 	lv_obj_t* Label;
+
+	lv_obj_t* ReturnRow;
+	lv_obj_t* ButtonReturn;
+	lv_obj_t* LabelCurrentPage;
+	lv_obj_t* ButtonUSBDownload;
+
+	lv_obj_t* ContentRow;
 	WallpapperPage Wallpappers[10];
 }SettingsWallpapperPage;
 
@@ -55,7 +62,12 @@ typedef struct SettingsThemePage
 	lv_obj_t* Handle;
 	lv_obj_t* Label;
 
+	lv_obj_t* ReturnRow;
+	lv_obj_t* ButtonReturn;
+	lv_obj_t* LabelCurrentPage;
+	lv_obj_t* ButtonUSBDownload;
 
+	lv_obj_t* ContentRow;
 	ThemePage Themes[10];
 }SettingsThemePage;
 

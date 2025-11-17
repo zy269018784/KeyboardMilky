@@ -47,28 +47,39 @@ void CreateSettingsWallpapperPage(SettingsPage* Page)
 {
     Page->PageWallpapper.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
     Page->PageWallpapper.Label = CreateLabel(Page->PageWallpapper.Handle, 0, 0, LV_PCT(100), 50, "PageWallpapper", lv_color_hex3(0xF00));
+    
+    Page->PageWallpapper.ReturnRow = CreateBase(Page->Handle, 0, 0, LV_PCT(100), 40, lv_color_hex3(0x0F0));
+    Page->PageWallpapper.ButtonReturn = CreateButton(Page->PageWallpapper.ReturnRow, 0, 0, 40, 40, lv_color_hex3(0xFF0));
+    Page->PageWallpapper.LabelCurrentPage = CreateLabel(Page->PageWallpapper.ReturnRow, 40, 0, 180, 40, "BBBBBBBB", lv_color_hex3(0x0F0));
+    Page->PageWallpapper.ButtonUSBDownload = CreateButton(Page->PageWallpapper.ReturnRow, 440, 0, 40, 40, lv_color_hex3(0xFF0));
 
-    //Page->PageWallpapper.Wallpappers[0].Handle = CreateBase(Page->PageWallpapper.Handle, 3 * 1 + 156 * 0, 4 * 1 + 234 * 0, 156, 234, lv_color_hex3(0xFF0));
-    //return;
-    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[0], Page->PageWallpapper.Handle, 3 * 1 + 156 * 0, 4 * 1 + 234 * 0, 156, 234, NULL);
-    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[1], Page->PageWallpapper.Handle, 3 * 2 + 156 * 1, 4 * 1 + 234 * 0, 156, 234, NULL);
-    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[2], Page->PageWallpapper.Handle, 3 * 3 + 156 * 2, 4 * 1 + 234 * 0, 156, 234, NULL);
-    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[3], Page->PageWallpapper.Handle, 3 * 1 + 156 * 0, 4 * 2 + 234 * 1, 156, 234, NULL);
-    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[4], Page->PageWallpapper.Handle, 3 * 2 + 156 * 1, 4 * 2 + 234 * 1, 156, 234, NULL);
-    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[5], Page->PageWallpapper.Handle, 3 * 3 + 156 * 2, 4 * 2 + 234 * 1, 156, 234, NULL);
+    Page->PageWallpapper.ContentRow = CreateBase(Page->Handle, 0, 40, LV_PCT(100), LV_PCT(100) - 40, lv_color_hex3(0x0F0));
+    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[0], Page->PageWallpapper.ContentRow, 3 * 1 + 156 * 0, 4 * 1 + 234 * 0, 156, 234, NULL);
+    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[1], Page->PageWallpapper.ContentRow, 3 * 2 + 156 * 1, 4 * 1 + 234 * 0, 156, 234, NULL);
+    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[2], Page->PageWallpapper.ContentRow, 3 * 3 + 156 * 2, 4 * 1 + 234 * 0, 156, 234, NULL);
+    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[3], Page->PageWallpapper.ContentRow, 3 * 1 + 156 * 0, 4 * 2 + 234 * 1, 156, 234, NULL);
+    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[4], Page->PageWallpapper.ContentRow, 3 * 2 + 156 * 1, 4 * 2 + 234 * 1, 156, 234, NULL);
+    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[5], Page->PageWallpapper.ContentRow, 3 * 3 + 156 * 2, 4 * 2 + 234 * 1, 156, 234, NULL);
 }
 
 void CreateSettingsThemePage(SettingsPage* Page)
 {
+
     Page->PageTheme.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
     Page->PageTheme.Label = CreateLabel(Page->PageTheme.Handle, 0, 0, LV_PCT(100), 50, "PageTheme", lv_color_hex3(0xF00));
 
-    CreateThemePage(&Page->PageTheme.Themes[0], Page->PageTheme.Handle, "theme1", 3 * 1 + 156 * 0, 4 * 1 + 234 * 0, 156, 234, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[1], Page->PageTheme.Handle, "theme2", 3 * 2 + 156 * 1, 4 * 1 + 234 * 0, 156, 234, NULL); 
-    CreateThemePage(&Page->PageTheme.Themes[2], Page->PageTheme.Handle, "theme3", 3 * 3 + 156 * 2, 4 * 1 + 234 * 0, 156, 234, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[3], Page->PageTheme.Handle, "theme4", 3 * 1 + 156 * 0, 4 * 2 + 234 * 1, 156, 234, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[4], Page->PageTheme.Handle, "theme5", 3 * 2 + 156 * 1, 4 * 2 + 234 * 1, 156, 234, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[5], Page->PageTheme.Handle, "theme6", 3 * 3 + 156 * 2, 4 * 2 + 234 * 1, 156, 234, NULL);
+    Page->PageTheme.ReturnRow = CreateBase(Page->Handle, 0, 0, LV_PCT(100), 40, lv_color_hex3(0x0F0));
+    Page->PageTheme.ButtonReturn = CreateButton(Page->PageTheme.ReturnRow, 0, 0, 40, 40, lv_color_hex3(0xFF0));
+    Page->PageTheme.LabelCurrentPage = CreateLabel(Page->PageTheme.ReturnRow, 40, 0, 180, 40, "AAAAAAAAA", lv_color_hex3(0x0F0));
+    Page->PageTheme.ButtonUSBDownload = CreateButton(Page->PageTheme.ReturnRow, 440, 0, 40, 40, lv_color_hex3(0xFF0));
+
+    Page->PageTheme.ContentRow = CreateBase(Page->Handle, 0, 40, LV_PCT(100), LV_PCT(100) - 40, lv_color_hex3(0x0F0));
+    CreateThemePage(&Page->PageTheme.Themes[0], Page->PageTheme.ContentRow, "theme1", 3 * 1 + 156 * 0, 4 * 1 + 234 * 0, 156, 234, NULL);
+    CreateThemePage(&Page->PageTheme.Themes[1], Page->PageTheme.ContentRow, "theme2", 3 * 2 + 156 * 1, 4 * 1 + 234 * 0, 156, 234, NULL); 
+    CreateThemePage(&Page->PageTheme.Themes[2], Page->PageTheme.ContentRow, "theme3", 3 * 3 + 156 * 2, 4 * 1 + 234 * 0, 156, 234, NULL);
+    CreateThemePage(&Page->PageTheme.Themes[3], Page->PageTheme.ContentRow, "theme4", 3 * 1 + 156 * 0, 4 * 2 + 234 * 1, 156, 234, NULL);
+    CreateThemePage(&Page->PageTheme.Themes[4], Page->PageTheme.ContentRow, "theme5", 3 * 2 + 156 * 1, 4 * 2 + 234 * 1, 156, 234, NULL);
+    CreateThemePage(&Page->PageTheme.Themes[5], Page->PageTheme.ContentRow, "theme6", 3 * 3 + 156 * 2, 4 * 2 + 234 * 1, 156, 234, NULL);
 }
 
 void CreateSettingsDockPage(SettingsPage* Page)
@@ -100,12 +111,23 @@ void ShowSettingPage(SettingsPage* Page, int PageNo)
     lv_obj_clear_flag(Page->Handle, LV_OBJ_FLAG_HIDDEN);
 
     lv_obj_add_flag(Page->PageHome.Handle, LV_OBJ_FLAG_HIDDEN);
+
     lv_obj_add_flag(Page->PageWallpapper.Handle, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(Page->PageWallpapper.ReturnRow, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(Page->PageWallpapper.ContentRow, LV_OBJ_FLAG_HIDDEN);
+
     lv_obj_add_flag(Page->PageTheme.Handle, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(Page->PageTheme.ReturnRow, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(Page->PageTheme.ContentRow, LV_OBJ_FLAG_HIDDEN);
+
     lv_obj_add_flag(Page->PageDock.Handle, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(Page->PageClock.Handle, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(Page->PageOther.Handle, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(Page->PageUpdate.Handle, LV_OBJ_FLAG_HIDDEN);
+
+
+
+
 
     switch (PageNo)
     {
@@ -113,9 +135,13 @@ void ShowSettingPage(SettingsPage* Page, int PageNo)
         lv_obj_clear_flag(Page->PageHome.Handle, LV_OBJ_FLAG_HIDDEN);
         break;
     case THEME_PAGE_NUM:
+        lv_obj_clear_flag(Page->PageTheme.ReturnRow, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_clear_flag(Page->PageTheme.ContentRow, LV_OBJ_FLAG_HIDDEN);
         lv_obj_clear_flag(Page->PageTheme.Handle, LV_OBJ_FLAG_HIDDEN);
         break;
     case WALLPAPER_PAGE_NUM:
+        lv_obj_clear_flag(Page->PageWallpapper.ReturnRow, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_clear_flag(Page->PageWallpapper.ContentRow, LV_OBJ_FLAG_HIDDEN);
         lv_obj_clear_flag(Page->PageWallpapper.Handle, LV_OBJ_FLAG_HIDDEN);
         break;
     case DOCK_PAGE_NUM:

@@ -1,5 +1,5 @@
 ﻿#include "ClockPage.h"
-#include "LVGLDemo/Widgets/Widget.h"
+#include "Widgets/Widget.h"
 void CreateClockPage(ClockPage* Page, lv_obj_t* Parent)
 {
     /*---------------------------------------------------------------------*/

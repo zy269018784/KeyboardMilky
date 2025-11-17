@@ -1,5 +1,5 @@
 ﻿#include "SystemInfoPage.h"
-#include "LVGLDemo/Widgets/Widget.h"
+#include "Widgets/Widget.h"
 void CreateSystemInfoPage(SystemInfoPage* Page, lv_obj_t* Parent)
 {
     Page->Parent = Parent;

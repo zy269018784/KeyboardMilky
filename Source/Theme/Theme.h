@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "LVGLDemo/Point2.h"
+#include "Point2.h"
 typedef struct {
 	/*
 		Music

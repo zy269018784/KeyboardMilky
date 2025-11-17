@@ -1,6 +1,6 @@
 ﻿#include "SettingsPage.h"
-#include "LVGLDemo/Widgets/Widget.h"
-#include "LVGLDemo/Pages/ThemePage.h"
+#include "Widgets/Widget.h"
+#include "Pages/ThemePage.h"
 #include <stdio.h>
 void CreateSettingsHomePage(SettingsPage* Page);
 void CreateSettingsWallpapperPage(SettingsPage* Page);

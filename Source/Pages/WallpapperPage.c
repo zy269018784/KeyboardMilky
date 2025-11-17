@@ -1,5 +1,5 @@
 ﻿#include "WallpapperPage.h"
-#include "LVGLDemo/Widgets/Widget.h"
+#include "Widgets/Widget.h"
 void CreateWallpapperPage(WallpapperPage* Page, lv_obj_t* Parent, int X, int Y, int W, int H, void* Pixels)
 {
     Page->Parent = Parent;

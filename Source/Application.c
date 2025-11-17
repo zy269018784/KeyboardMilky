@@ -1,5 +1,5 @@
 ﻿#include "Application.h"
-#include "LVGLDemo/Widgets/Widget.h"
+#include "Widgets/Widget.h"
 void ShowSettingPage(SettingsPage* Page, int PageNo);
 
 void CreateButtonLayout(Application* App, lv_obj_t *Parent)

@@ -1,5 +1,5 @@
 ﻿#include "ThemePage.h"
-#include "LVGLDemo/Widgets/Widget.h"
+#include "Widgets/Widget.h"
 void CreateThemePage(ThemePage* Page, lv_obj_t* Parent, const char* Title, int X, int Y, int W, int H, void* Pixels)
 {
     Page->Parent = Parent;

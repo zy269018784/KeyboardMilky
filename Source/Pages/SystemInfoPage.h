@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <lvgl/lvgl.h>
-#include "LVGLDemo/Point2.h"
+#include "Point2.h"
 
 typedef struct SystemInfoPage
 {

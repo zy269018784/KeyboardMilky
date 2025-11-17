@@ -47,6 +47,7 @@ typedef struct SettingsWallpapperPage
 {
 	lv_obj_t* Handle;
 	lv_obj_t* Label;
+	WallpapperPage Wallpappers[10];
 }SettingsWallpapperPage;
 
 typedef struct SettingsThemePage

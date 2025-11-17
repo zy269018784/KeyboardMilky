@@ -9,6 +9,9 @@ typedef struct ThemePage
 
 	lv_obj_t* LabelThemeTitle;
 	lv_obj_t* ImageTheme;
+
+	lv_obj_t* ButtonApply;
+	lv_obj_t* LabelApply;
 }ThemePage;
 
 #ifdef __cplusplus

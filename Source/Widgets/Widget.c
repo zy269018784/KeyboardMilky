@@ -8,6 +8,7 @@ lv_obj_t* CreateBase(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int32_t 
     /*
         设置位置和尺寸
     */
+    lv_obj_set_pos(Handle, x, y);
     lv_obj_set_size(Handle, w, h); // 全屏
     /*
         设置盒子模型

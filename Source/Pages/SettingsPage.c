@@ -47,6 +47,15 @@ void CreateSettingsWallpapperPage(SettingsPage* Page)
 {
     Page->PageWallpapper.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
     Page->PageWallpapper.Label = CreateLabel(Page->PageWallpapper.Handle, 0, 0, LV_PCT(100), 50, "PageWallpapper", lv_color_hex3(0xF00));
+
+    //Page->PageWallpapper.Wallpappers[0].Handle = CreateBase(Page->PageWallpapper.Handle, 3 * 1 + 156 * 0, 4 * 1 + 234 * 0, 156, 234, lv_color_hex3(0xFF0));
+    //return;
+    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[0], Page->PageWallpapper.Handle, 3 * 1 + 156 * 0, 4 * 1 + 234 * 0, 156, 234, NULL);
+    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[1], Page->PageWallpapper.Handle, 3 * 2 + 156 * 1, 4 * 1 + 234 * 0, 156, 234, NULL);
+    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[2], Page->PageWallpapper.Handle, 3 * 3 + 156 * 2, 4 * 1 + 234 * 0, 156, 234, NULL);
+    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[3], Page->PageWallpapper.Handle, 3 * 1 + 156 * 0, 4 * 2 + 234 * 1, 156, 234, NULL);
+    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[4], Page->PageWallpapper.Handle, 3 * 2 + 156 * 1, 4 * 2 + 234 * 1, 156, 234, NULL);
+    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[5], Page->PageWallpapper.Handle, 3 * 3 + 156 * 2, 4 * 2 + 234 * 1, 156, 234, NULL);
 }
 
 void CreateSettingsThemePage(SettingsPage* Page)
@@ -54,16 +63,12 @@ void CreateSettingsThemePage(SettingsPage* Page)
     Page->PageTheme.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
     Page->PageTheme.Label = CreateLabel(Page->PageTheme.Handle, 0, 0, LV_PCT(100), 50, "PageTheme", lv_color_hex3(0xF00));
 
-    //return;
-    CreateThemePage(&Page->PageTheme.Themes[0], Page->PageTheme.Handle, "theme1", 0,     0, 150, 200, NULL);
-    return;
-    CreateThemePage(&Page->PageTheme.Themes[1], Page->PageTheme.Handle, "theme2", 300,   0, 200, 400, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[2], Page->PageTheme.Handle, "theme3", 600,   0, 200, 400, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[3], Page->PageTheme.Handle, "theme4", 900,   0, 200, 400, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[4], Page->PageTheme.Handle, "theme5", 0,   500, 200, 400, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[5], Page->PageTheme.Handle, "theme6", 300, 500, 200, 400, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[6], Page->PageTheme.Handle, "theme7", 600, 500, 200, 400, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[7], Page->PageTheme.Handle, "theme8", 900, 500, 200, 400, NULL);
+    CreateThemePage(&Page->PageTheme.Themes[0], Page->PageTheme.Handle, "theme1", 3 * 1 + 156 * 0, 4 * 1 + 234 * 0, 156, 234, NULL);
+    CreateThemePage(&Page->PageTheme.Themes[1], Page->PageTheme.Handle, "theme2", 3 * 2 + 156 * 1, 4 * 1 + 234 * 0, 156, 234, NULL); 
+    CreateThemePage(&Page->PageTheme.Themes[2], Page->PageTheme.Handle, "theme3", 3 * 3 + 156 * 2, 4 * 1 + 234 * 0, 156, 234, NULL);
+    CreateThemePage(&Page->PageTheme.Themes[3], Page->PageTheme.Handle, "theme4", 3 * 1 + 156 * 0, 4 * 2 + 234 * 1, 156, 234, NULL);
+    CreateThemePage(&Page->PageTheme.Themes[4], Page->PageTheme.Handle, "theme5", 3 * 2 + 156 * 1, 4 * 2 + 234 * 1, 156, 234, NULL);
+    CreateThemePage(&Page->PageTheme.Themes[5], Page->PageTheme.Handle, "theme6", 3 * 3 + 156 * 2, 4 * 2 + 234 * 1, 156, 234, NULL);
 }
 
 void CreateSettingsDockPage(SettingsPage* Page)

@@ -100,6 +100,16 @@ void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
         lv_obj_clear_flag(App->PageClock.Handle, LV_OBJ_FLAG_HIDDEN);
         lv_obj_set_parent(App->RowLayout, App->PageClock.Handle);
         lv_obj_set_style_bg_color(App->ButtonClock, App->CurrentTheme.main_font_color, 0);
+        if (0 == SubPageIndex)
+        {
+            lv_obj_add_flag(App->PageClock.TimeUpPageHandle, LV_OBJ_FLAG_HIDDEN);
+            lv_obj_clear_flag(App->PageClock.Handle, LV_OBJ_FLAG_HIDDEN);
+        }
+        else
+        {
+            lv_obj_add_flag(App->PageClock.Handle, LV_OBJ_FLAG_HIDDEN);
+            lv_obj_clear_flag(App->PageClock.TimeUpPageHandle, LV_OBJ_FLAG_HIDDEN);
+        }
         break;
     case SystemInfoPageNum:
         lv_obj_clear_flag(App->PageSystemInfo.Handle, LV_OBJ_FLAG_HIDDEN);
@@ -117,7 +127,7 @@ void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
 void Run(Application* App)
 {
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
-    ShowPage(App, SettingPageNum, WALLPAPER_PAGE_NUM);
+    ShowPage(App, ClockPageNum, 1);
 
 
     while (1)

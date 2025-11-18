@@ -4,15 +4,6 @@
 #include "ThemePage.h"
 #include "WallpapperPage.h"
 
-//#define SettingHomePageNum		0
-//#define ThemePageNum			1
-//#define WallpaperPageNum		2
-//#define ThemePageNum			3
-//#define DockPageNum				4
-//#define ClockPageNum			5
-//#define OtherPageNum			6
-//#define UpdatePageNum			7
-
 typedef enum {
 	SETTING_HOME_PAGE_NUM = 0,
 	THEME_PAGE_NUM = 1,

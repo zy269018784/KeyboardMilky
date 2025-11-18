@@ -4,11 +4,11 @@
 typedef struct ClockPage
 {
 	lv_obj_t* Parent;
-	lv_obj_t* Handle;
 	/*
-		时间到了显示这个页面
+		Page1
 	*/
-	lv_obj_t* TimeUpPageHandle;
+	lv_obj_t* Handle;
+
 	/*
 		timer_mode_circle / horizontal		调节时间是圆环还是横向
 		timer_start_button_size				番茄时钟界面的开始按钮的尺寸
@@ -48,12 +48,9 @@ typedef struct ClockPage
 
 	lv_obj_t* setting_time_button_label;
 	/*
-		Page 1
+		Page2: 时间到了显示这个页面
 	*/
-
-	/*
-		Page2 : Time up
-	*/
+	lv_obj_t* TimeUpPageHandle;
 	/*
 		返回按钮
 	*/
@@ -68,6 +65,12 @@ typedef struct ClockPage
 	Point2 timer_end_time_font_size;
 	Point2 timer_end_time_font_postion;
 	lv_obj_t* time_end_label;
+	/*
+		Time UP Label
+	*/
+	Point2 timer_up_font_size;
+	Point2 timer_up_font_postion;
+	lv_obj_t* time_up_label;
 }ClockPage;
 
 

@@ -83,7 +83,10 @@ struct Application* CreateApplication()
 void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
 {
     lv_obj_add_flag(App->PageSystemInfo.Handle, LV_OBJ_FLAG_HIDDEN);
+
     lv_obj_add_flag(App->PageClock.Handle, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(App->PageClock.TimeUpPageHandle, LV_OBJ_FLAG_HIDDEN);
+
     lv_obj_add_flag(App->PageMusic.Handle, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(App->PageSettings.Handle, LV_OBJ_FLAG_HIDDEN);
 
@@ -127,7 +130,7 @@ void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
 void Run(Application* App)
 {
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
-    ShowPage(App, ClockPageNum, 1);
+    ShowPage(App, SystemInfoPageNum, 1);
 
 
     while (1)

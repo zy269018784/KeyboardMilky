@@ -116,7 +116,7 @@ lv_obj_t* CreateImage(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int32_t
     lv_obj_set_style_border_width(Handle, 0, 0);
     lv_obj_set_style_margin_all(Handle, 0, 0);
     /*
-      设置背景颜色
+        设置背景颜色
     */
     lv_obj_set_style_bg_color(Handle, bgvalue, 0);
     /*

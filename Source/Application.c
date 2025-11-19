@@ -71,6 +71,7 @@ struct Application* CreateApplication()
     App->CurrentTheme.sub_color = lv_color_hex3(0x0FF);
     App->CurrentTheme.focused_color = lv_color_hex3(0xFF0);
 
+    CreateHomePage(&App->PageHome, ActiveScreen);
     CreateSystemInfoPage(&App->PageSystemInfo, ActiveScreen);
     CreateClockPage(&App->PageClock, ActiveScreen);
     CreateMusicPage(&App->PageMusic, ActiveScreen);
@@ -82,6 +83,8 @@ struct Application* CreateApplication()
 
 void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
 {
+    lv_obj_add_flag(App->PageHome.Handle, LV_OBJ_FLAG_HIDDEN);
+
     lv_obj_add_flag(App->PageSystemInfo.Handle, LV_OBJ_FLAG_HIDDEN);
 
     lv_obj_add_flag(App->PageClock.Handle, LV_OBJ_FLAG_HIDDEN);
@@ -93,6 +96,8 @@ void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
     switch (PageIndex)
     {
     case HomePageNum:
+        lv_obj_clear_flag(App->PageHome.Handle, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_set_parent(App->RowLayout, App->PageHome.Handle);
         break;
     case MusicPageNum:
         lv_obj_clear_flag(App->PageMusic.Handle, LV_OBJ_FLAG_HIDDEN);
@@ -130,7 +135,7 @@ void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
 void Run(Application* App)
 {
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
-    ShowPage(App, SystemInfoPageNum, 1);
+    ShowPage(App, HomePageNum, 0);
 
 
     while (1)

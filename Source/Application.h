@@ -2,6 +2,7 @@
 #include <lvgl/lvgl.h>
 #include <lvgl/src/drivers/lv_drivers.h>
 #include <lvgl/src/drivers/windows/lv_windows_display.h>
+#include "Pages/HomePage.h"
 #include "Pages/ClockPage.h"
 #include "Pages/MusicPage.h"
 #include "Pages/SystemInfoPage.h"
@@ -49,7 +50,7 @@ typedef struct Application
 	*/
 	Theme CurrentTheme;
 
-	//ThemePage PageTheme;
+	HomePage PageHome;
 	MusicPage PageMusic;
 	ClockPage PageClock;
 	SystemInfoPage PageSystemInfo;

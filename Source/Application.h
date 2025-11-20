@@ -2,12 +2,12 @@
 #include <lvgl/lvgl.h>
 #include <lvgl/src/drivers/lv_drivers.h>
 #include <lvgl/src/drivers/windows/lv_windows_display.h>
-#include "Pages/HomePage.h"
-#include "Pages/ClockPage.h"
-#include "Pages/MusicPage.h"
+#include "Pages/HomePage/HomePage.h"
+#include "Pages/ClockPage/ClockPage.h"
+#include "Pages/MusicPage/MusicPage.h"
 #include "Pages/SystemInfoPage/SystemInfoPage.h"
-#include "Pages/ThemePage.h"
-#include "Pages/SettingsPage.h"
+#include "Pages/SettingPage/ThemePage/ThemePage.h"
+#include "Pages/SettingPage/SettingsPage.h"
 
 #include "Point2.h"
 

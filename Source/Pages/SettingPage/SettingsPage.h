@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include <lvgl/lvgl.h>
 #include "Point2.h"
-#include "ThemePage.h"
-#include "WallpapperPage.h"
+#include "Pages/SettingPage/ThemePage/ThemePage.h"
+#include "Pages/SettingPage/WallpapperPage/WallpapperPage.h"
 
 typedef enum {
 	SETTING_HOME_PAGE_NUM = 0,

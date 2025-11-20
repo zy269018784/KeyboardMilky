@@ -5,7 +5,7 @@
 #include "Pages/HomePage.h"
 #include "Pages/ClockPage.h"
 #include "Pages/MusicPage.h"
-#include "Pages/SystemInfoPage.h"
+#include "Pages/SystemInfoPage/SystemInfoPage.h"
 #include "Pages/ThemePage.h"
 #include "Pages/SettingsPage.h"
 

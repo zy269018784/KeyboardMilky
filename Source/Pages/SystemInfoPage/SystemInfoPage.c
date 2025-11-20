@@ -4,29 +4,7 @@ void CreateSystemInfoPage(SystemInfoPage* Page, lv_obj_t* Parent)
 {
     Page->Parent = Parent;
     /*---------------------------------------------------------------------*/
-    Page->Handle = lv_obj_create(Parent);
-    /*
-        设置位置和尺寸
-    */
-    lv_obj_set_size(Page->Handle, LV_PCT(100), LV_PCT(100)); // 全屏
-    /*
-        设置盒子模型
-    */
-    lv_obj_set_style_pad_all(Page->Handle, 0, 0);
-    lv_obj_set_style_border_width(Page->Handle, 0, 0);
-    lv_obj_set_style_margin_all(Page->Handle, 0, 0);
-    /*
-          设置背景颜色
-      */
-    lv_obj_set_style_bg_color(Page->Handle, lv_color_hex3(0xF00), 0);
-    /*
-        设置radius
-    */
-    lv_obj_set_style_radius(Page->Handle, 0, 0);
-    /*
-        关闭滚动条
-    */
-    lv_obj_clear_flag(Page->Handle, LV_OBJ_FLAG_SCROLLABLE);
+    Page->Handle = CreateBase(Parent, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0xF00));
     /*---------------------------------------------------------------------*/
     /*
         label
@@ -44,5 +22,28 @@ void CreateSystemInfoPage(SystemInfoPage* Page, lv_obj_t* Parent)
     Page->DownSpeed     = CreateLabel(Page->Handle,  10,  260, 150, 50, "DownSpeed", lv_color_hex3(0x00F));
     Page->DownSpeed_2   = CreateLabel(Page->Handle, 200, 260, 150, 50, "200MB", lv_color_hex3(0x00F));
     /*---------------------------------------------------------------------*/
+    int Padding = 10;
+    Page->Widget1_Width  = 480 - 2 * Padding;
+    Page->Widget1_Height = 200;
+    Page->Widget2_Width  = 280;
+    Page->Widget2_Height = 200;
+    Page->Widget3_Width  = Page->Widget1_Width - 10 - Page->Widget2_Width;
+    Page->Widget3_Height = 200;
+
+    Page->Widget1_X = Padding;
+    Page->Widget1_Y = Padding;
+    Page->Widget2_X = Padding;
+    Page->Widget2_Y = Page->Widget1_Y + Page->Widget1_Height + Padding;
+    Page->Widget3_X = Page->Widget2_X + Page->Widget2_Width  + Padding;
+    Page->Widget3_Y = Page->Widget2_Y;
+
+    Page->Widget1 = CreateBase(Page->Handle, Page->Widget1_X, Page->Widget1_Y,   Page->Widget1_Width, Page->Widget1_Height, lv_color_hex3(0x000));
+    Page->Widget2 = CreateBase(Page->Handle, Page->Widget2_X, Page->Widget3_Y, Page->Widget2_Width, Page->Widget2_Height, lv_color_hex3(0x000));
+    Page->Widget3 = CreateBase(Page->Handle, Page->Widget3_X, Page->Widget3_Y, Page->Widget3_Width, Page->Widget3_Height, lv_color_hex3(0x000));
+    CreateCPUInfoWidget(&Page->CPUInfo, Page->Widget1, 10, 10, 60, 60);
+    CreateTempInfoWidget(&Page->TempInfo, Page->Widget1,   250, 70, 200, 60);
+    CreateClockInfoWidget(&Page->ClockInfo, Page->Widget1, 250, 10, 200, 60);
+    CreateNetworkInfoWidget(&Page->NetworkInfo, Page->Widget2, 0, 0,   Page->Widget2_Width, Page->Widget2_Height);
+    CreateMemoryInfoWidget(&Page->MemoryInfo,   Page->Widget3, 0, 0,   Page->Widget3_Width, Page->Widget3_Height);
 }
 

@@ -135,7 +135,7 @@ void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
 void Run(Application* App)
 {
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
-    ShowPage(App, HomePageNum, 0);
+    ShowPage(App, HomePageNum, THEME_PAGE_NUM);
 
 
     while (1)

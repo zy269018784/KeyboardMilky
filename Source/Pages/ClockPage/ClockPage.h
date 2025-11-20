@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <lvgl/lvgl.h>
 #include "Point2.h"
+#include "Theme/Theme.h"
 typedef struct ClockPage
 {
 	lv_obj_t* Parent;
@@ -78,8 +79,14 @@ typedef struct ClockPage
 extern "C"
 {
 #endif
-	void CreateClockPage(ClockPage* Page, lv_obj_t* Parent);
-	void CreateClockPageTimeUp(ClockPage* Page, lv_obj_t* Parent);
+	void CreateTheme1ClockPage(ClockPage* Page, lv_obj_t* Parent, Theme* Theme);
+	void CreateTheme1ClockPageTimeUp(ClockPage* Page, lv_obj_t* Parent, Theme* Theme);
+	void CreateTheme2ClockPage(ClockPage* Page, lv_obj_t* Parent, Theme* Theme);
+	void CreateTheme2ClockPageTimeUp(ClockPage* Page, lv_obj_t* Parent, Theme* Theme);
+	void CreateTheme3ClockPage(ClockPage* Page, lv_obj_t* Parent, Theme* Theme);
+	void CreateTheme3ClockPageTimeUp(ClockPage* Page, lv_obj_t* Parent, Theme* Theme);
+
+
 	void ClockTimeUpState(ClockPage* Page);
 	void ClockDefaultState(ClockPage* Page);
 	void ClockStartState(ClockPage* Page);

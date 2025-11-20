@@ -71,10 +71,32 @@ struct Application* CreateApplication()
     App->CurrentTheme.main_color = lv_color_hex3(0xF0F);
     App->CurrentTheme.sub_color = lv_color_hex3(0x0FF);
     App->CurrentTheme.focused_color = lv_color_hex3(0xFF0);
+    App->CurrentTheme.Index = 1;
+    App->CurrentTheme.timer_start_button_postion.x = 420;
+    App->CurrentTheme.timer_start_button_postion.y = 10;
+    App->CurrentTheme.timer_start_button_size.x = 50;
+    App->CurrentTheme.timer_start_button_size.y = 50;
+
+    App->CurrentTheme.timer_stop_button_postion.x = 420;
+    App->CurrentTheme.timer_stop_button_postion.y = 70;
+    App->CurrentTheme.timer_stop_button_size.x = 50;
+    App->CurrentTheme.timer_stop_button_size.y = 50;
+
 
     CreateHomePage(&App->PageHome, ActiveScreen);
     CreateSystemInfoPage(&App->PageSystemInfo, ActiveScreen);
-    CreateClockPage(&App->PageClock, ActiveScreen);
+    switch (App->CurrentTheme.Index)
+    {
+    case 1:
+        CreateTheme1ClockPage(&App->PageClock, ActiveScreen, &App->CurrentTheme);
+        break;
+    case 2:
+        CreateTheme2ClockPage(&App->PageClock, ActiveScreen, &App->CurrentTheme);
+        break;
+    case 3:
+        CreateTheme3ClockPage(&App->PageClock, ActiveScreen, &App->CurrentTheme);
+        break;
+    }
     CreateMusicPage(&App->PageMusic, ActiveScreen);
     CreateSettingsPage(&App->PageSettings, ActiveScreen);
 
@@ -136,7 +158,7 @@ void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
 void Run(Application* App)
 {
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
-    ShowPage(App, HomePageNum, THEME_PAGE_NUM);
+    ShowPage(App, ClockPageNum, 0);
 
 
     while (1)

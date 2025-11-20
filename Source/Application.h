@@ -8,24 +8,24 @@
 #include "Pages/SystemInfoPage/SystemInfoPage.h"
 #include "Pages/SettingPage/ThemePage/ThemePage.h"
 #include "Pages/SettingPage/SettingsPage.h"
-
+#include "Theme/Theme.h"
 #include "Point2.h"
 
-typedef struct Theme
-{
-	/*
-		main_font_color		字体主要颜色
-		sub_font_color		字体辅助颜色
-		main_color			主要颜色
-		sub_color			辅助颜色
-		focused_color		选中颜色
-	*/
-	lv_color_t main_font_color;
-	lv_color_t sub_font_color;
-	lv_color_t main_color;
-	lv_color_t sub_color;
-	lv_color_t focused_color;
-}Theme;
+//typedef struct Theme
+//{
+//	/*
+//		main_font_color		字体主要颜色
+//		sub_font_color		字体辅助颜色
+//		main_color			主要颜色
+//		sub_color			辅助颜色
+//		focused_color		选中颜色
+//	*/
+//	lv_color_t main_font_color;
+//	lv_color_t sub_font_color;
+//	lv_color_t main_color;
+//	lv_color_t sub_color;
+//	lv_color_t focused_color;
+//}Theme;
 
 
 
@@ -64,11 +64,11 @@ extern "C"
 {
 #endif
 	Application* CreateApplication();
-	void ShowPage(Application* App, int index);
+	//void ShowPage(Application* App, int index);
 	void Run(struct Application* App);
 
-	Application* CreateApplication2();
-	void Run2(struct Application* App);
+	//Application* CreateApplication2();
+	//void Run2(struct Application* App);
 #ifdef __cplusplus
 }
 #endif

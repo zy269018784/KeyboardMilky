@@ -18,8 +18,8 @@ void CreateThemePage(ThemePage* Page, lv_obj_t* Parent, const char* Title, int X
     //lv_obj_set_style_bg_opa(Page->ImageTheme, LV_OPA_COVER, 0);  
 
 
-    lv_image_set_scale_x(Page->ImageTheme, 256 * (1.f * W / ikutaerika.header.w));
-    lv_image_set_scale_y(Page->ImageTheme, 256 * (1.f * W / ikutaerika.header.h));
+    lv_image_set_scale_x(Page->ImageTheme, 256 * (1.f * W / theme.header.w));
+    lv_image_set_scale_y(Page->ImageTheme, 256 * (1.f * W / theme.header.h));
     lv_image_set_src(Page->ImageTheme, &ikutaerika);
     
     //lv_obj_set_width(Page->ImageTheme, LV_SIZE_CONTENT);

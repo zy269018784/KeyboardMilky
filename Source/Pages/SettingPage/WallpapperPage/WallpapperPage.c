@@ -8,9 +8,9 @@ void CreateWallpapperPage(WallpapperPage* Page, lv_obj_t* Parent, int X, int Y, 
 
     Page->ImageTheme = CreateImage(Page->Handle, 0, 0, W, W, lv_color_hex3(0x0fF));
     lv_obj_set_style_radius(Page->ImageTheme, 20, 0);
-    lv_image_set_scale_x(Page->ImageTheme, 256 * (1.f * W / ikutaerika.header.w));
-    lv_image_set_scale_y(Page->ImageTheme, 256 * (1.f * W / ikutaerika.header.h));
-    lv_image_set_src(Page->ImageTheme, &ikutaerika);
+    lv_image_set_scale_x(Page->ImageTheme, 256 * (1.f * W / theme.header.w));
+    lv_image_set_scale_y(Page->ImageTheme, 256 * (1.f * W / theme.header.h));
+    lv_image_set_src(Page->ImageTheme, &theme);
 
     Page->ButtonApply = CreateButton(Page->ImageTheme, W / 2 - 50, W - 40, 100, 20, lv_color_hex3(0xFFF));
     lv_obj_set_style_radius(Page->ButtonApply, 10, 0);

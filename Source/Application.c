@@ -60,6 +60,16 @@ struct Application* CreateApplication()
         100,
         false,
         true);
+		
+	/* --- 为该显示获取/创建 Windows pointer input device --- */
+	#if LV_USE_WINDOWS
+		/* 这会在内部创建一个 lv_indev_t 并绑定到显示窗口，使鼠标/触摸可用 */
+		lv_indev_t* win_indev = lv_windows_acquire_pointer_indev(App->Display);
+		printf("lv_windows_acquire_pointer_indev -> %p\n", win_indev);
+		if (!win_indev) {
+			printf("Warning: failed to acquire windows pointer indev. Check LV_USE_WINDOWS and drivers build.\n");
+		}
+	#endif
 
     lv_obj_t* ActiveScreen = lv_screen_active();
     lv_obj_set_style_pad_all(ActiveScreen, 0, 0);
@@ -97,10 +107,11 @@ struct Application* CreateApplication()
         CreateTheme3ClockPage(&App->PageClock, ActiveScreen, &App->CurrentTheme);
         break;
     }
-    CreateMusicPage(&App->PageMusic, ActiveScreen);
+    //CreateMusicPage(&App->PageMusic, ActiveScreen);
+    CreateMusicPageTheme2(&App->PageMusic, ActiveScreen); // TODO: 切换主题时，重新创建页面？？？
     CreateSettingsPage(&App->PageSettings, ActiveScreen);
+    CreateButtonLayout(App, ActiveScreen);
 
-    CreateButtonLayout(App, App->PageMusic.Handle);
     return App;
 }
 

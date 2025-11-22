@@ -61,11 +61,22 @@ struct Application* CreateApplication()
         false,
         true);
 
+
+
+    //lv_obj_t* header = lv_win_get_header(App->Display);
+    //lv_obj_add_flag(header, LV_OBJ_FLAG_HIDDEN);
+
     lv_obj_t* ActiveScreen = lv_screen_active();
     lv_obj_set_style_pad_all(ActiveScreen, 0, 0);
     lv_obj_set_style_border_width(ActiveScreen, 0, 0);
     lv_obj_set_style_margin_all(ActiveScreen, 0, 0);
-    
+
+    //App->Window = lv_win_create(ActiveScreen);
+    //lv_obj_set_pos(App->Window, 0, 0);
+    //lv_obj_set_size(App->Window, 480, 480);
+    //lv_obj_t* header = lv_win_get_header(App->Window);
+    //lv_obj_add_flag(header, LV_OBJ_FLAG_HIDDEN);
+
     App->CurrentTheme.main_font_color = lv_color_hex3(0x00F);
     App->CurrentTheme.sub_font_color = lv_color_hex3(0x0F0);
     App->CurrentTheme.main_color = lv_color_hex3(0xF0F);
@@ -158,7 +169,8 @@ void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
 void Run(Application* App)
 {
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
-    ShowPage(App, ClockPageNum, 0);
+    ShowPage(App, SettingPageNum, WALLPAPER_PAGE_NUM);
+    //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
 
 
     while (1)

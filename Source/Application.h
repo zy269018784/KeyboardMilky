@@ -38,6 +38,7 @@
 typedef struct Application
 {
 	lv_display_t* Display;
+	//lv_obj_t* Window;
 
 	lv_obj_t* RowLayout;
 	lv_obj_t* ButtonHomePage;

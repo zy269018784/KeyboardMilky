@@ -43,42 +43,136 @@ void CreateSettingsHomePage(SettingsPage* Page)
     Page->PageHome.LabelUpdate = CreateLabel(Page->PageHome.ButtonUpdate, 0, 0, w, 50, "Update", lv_color_hex3(0x00F));
 }
 
+Point2 GetThemePos(int LinearIndex, int w, int h, int padding)
+{
+    int row = LinearIndex / 2;
+    int col = LinearIndex % 2;
+    return (Point2) { padding + col * (w + padding), row* (h + padding) };
+}
+
 void CreateSettingsWallpapperPage(SettingsPage* Page)
 {
+    int padding = 6;
+    int H1 = 60 + 2 * 6;
+    Point2 ButtonReturnSzie = { 60,   60 };
+    Point2 LabelCurrentPageSize = { 180 , 60 };
+    Point2 ReturnRowPos = { 0,    padding };
+    Point2 ReturnRowSize = { 480,  60 };
+    Point2 ContentRowPos = { 0,    ReturnRowPos.y + ReturnRowSize.y + padding };
+    Point2 ContentRowSize = { 480,  480 - 3 * padding - ReturnRowSize.y };
+
     Page->PageWallpapper.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
-    Page->PageWallpapper.Label = CreateLabel(Page->PageWallpapper.Handle, 0, 0, LV_PCT(100), 50, "PageWallpapper", lv_color_hex3(0xF00));
+  //  Page->PageWallpapper.Label = CreateLabel(Page->PageWallpapper.Handle, 0, 0, LV_PCT(100), 50, "PageWallpapper", lv_color_hex3(0xF00));
     
-    Page->PageWallpapper.ReturnRow = CreateBase(Page->Handle, 0, 0, LV_PCT(100), 40, lv_color_hex3(0x0F0));
-    Page->PageWallpapper.ButtonReturn = CreateButton(Page->PageWallpapper.ReturnRow, 0, 0, 40, 40, lv_color_hex3(0xFF0));
-    Page->PageWallpapper.LabelCurrentPage = CreateLabel(Page->PageWallpapper.ReturnRow, 40, 0, 180, 40, "BBBBBBBB", lv_color_hex3(0x0F0));
+    Page->PageWallpapper.ReturnRow = CreateBase(Page->Handle, ReturnRowPos.x, ReturnRowPos.y, ReturnRowSize.x, ReturnRowSize.y, lv_color_hex3(0x0F0));
+
+    Page->PageWallpapper.ButtonReturn = CreateButton(Page->PageWallpapper.ReturnRow, 
+        padding,
+        0,
+        ButtonReturnSzie.x,
+        ButtonReturnSzie.y,
+        lv_color_hex3(0xFF0));
+
+    Page->PageWallpapper.LabelCurrentPage = CreateLabel(Page->PageWallpapper.ReturnRow, 
+        2 * padding + ButtonReturnSzie.x,
+        0,
+        LabelCurrentPageSize.x,
+        LabelCurrentPageSize.y,
+        "Wallpapper", lv_color_hex3(0x0F0));
+
     Page->PageWallpapper.ButtonUSBDownload = CreateButton(Page->PageWallpapper.ReturnRow, 440, 0, 40, 40, lv_color_hex3(0xFF0));
 
-    Page->PageWallpapper.ContentRow = CreateBase(Page->Handle, 0, 40, LV_PCT(100), LV_PCT(100) - 40, lv_color_hex3(0x0F0));
-    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[0], Page->PageWallpapper.ContentRow, 3 * 1 + 156 * 0, 4 * 1 + 234 * 0, 156, 234, NULL);
-    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[1], Page->PageWallpapper.ContentRow, 3 * 2 + 156 * 1, 4 * 1 + 234 * 0, 156, 234, NULL);
-    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[2], Page->PageWallpapper.ContentRow, 3 * 3 + 156 * 2, 4 * 1 + 234 * 0, 156, 234, NULL);
-    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[3], Page->PageWallpapper.ContentRow, 3 * 1 + 156 * 0, 4 * 2 + 234 * 1, 156, 234, NULL);
-    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[4], Page->PageWallpapper.ContentRow, 3 * 2 + 156 * 1, 4 * 2 + 234 * 1, 156, 234, NULL);
-    CreateWallpapperPage(&Page->PageWallpapper.Wallpappers[5], Page->PageWallpapper.ContentRow, 3 * 3 + 156 * 2, 4 * 2 + 234 * 1, 156, 234, NULL);
+    int w = (480 - 3 * padding) / 2, h = w;
+    InitHead(&Page->PageWallpapper.WallpapperPageLists);
+    for (int i = 0; i < 4; i++)
+    {
+        AddTail(&Page->PageWallpapper.WallpapperPageLists, &Page->PageWallpapper.Wallpappers[i].Node);
+    }
+
+    Page->PageWallpapper.ContentRow = CreateBase(Page->Handle, ContentRowPos.x, ContentRowPos.y, ContentRowSize.x, ContentRowSize.y, lv_color_hex3(0x0F0));
+    ListNode* Node = Page->PageWallpapper.WallpapperPageLists.Head;
+    for (int i = 0; i < Page->PageWallpapper.WallpapperPageLists.Count; i++)
+    {
+        WallpapperPage* TP = (WallpapperPage*)Node;
+        Point2 Pos = GetThemePos(i, w, h, padding);
+        CreateWallpapperPage(TP, Page->PageWallpapper.ContentRow, Pos.x, Pos.y, w, h, NULL);
+        Node = Node->Next;
+    }
 }
+
+/*
+    h1 + h2 = 480
+    ------------------------------------------------------------
+                padding
+    h1 padding  button  padding label     
+                padding
+    ------------------------------------------------------------
+                padding    
+    h2  padding theme1   padding    theme2  padding
+                padding
+        padding theme1   padding    theme2  padding
+    ------------------------------------------------------------
+*/
+
+//Point2 GetThemePos(int LinearIndex, int w, int h, int padding)
+//{
+//    int row = LinearIndex / 2;
+//    int col = LinearIndex % 2;
+//    return (Point2){ padding + col * (w + padding), row * (h + padding) };
+//}
 
 void CreateSettingsThemePage(SettingsPage* Page)
 {
+    int padding = 6;
+    int H1 = 60 + 2 * 6;
+    Point2 ButtonReturnSzie     = { 60,   60 };
+    Point2 LabelCurrentPageSize = { 180 , 60 };
+    Point2 ReturnRowPos         = { 0,    padding };
+    Point2 ReturnRowSize        = { 480,  60 };
+    Point2 ContentRowPos        = { 0,    ReturnRowPos.y + ReturnRowSize.y + padding };
+    Point2 ContentRowSize       = { 480,  480 - 3 * padding - ReturnRowSize .y};
     Page->PageTheme.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
-    Page->PageTheme.Label = CreateLabel(Page->PageTheme.Handle, 0, 0, LV_PCT(100), 50, "PageTheme", lv_color_hex3(0xF00));
+    
+    /*
+        H1
+    */
+    Page->PageTheme.ReturnRow = CreateBase(Page->Handle, ReturnRowPos.x, ReturnRowPos.y, LV_PCT(100), H1, lv_color_hex3(0x0F0));
 
-    Page->PageTheme.ReturnRow = CreateBase(Page->Handle, 0, 0, LV_PCT(100), 40, lv_color_hex3(0x0F0));
-    Page->PageTheme.ButtonReturn = CreateButton(Page->PageTheme.ReturnRow, 0, 0, 40, 40, lv_color_hex3(0xFF0));
-    Page->PageTheme.LabelCurrentPage = CreateLabel(Page->PageTheme.ReturnRow, 40, 0, 180, 40, "AAAAAAAAA", lv_color_hex3(0x0F0));
-    Page->PageTheme.ButtonUSBDownload = CreateButton(Page->PageTheme.ReturnRow, 440, 0, 40, 40, lv_color_hex3(0xFF0));
+    Page->PageTheme.ButtonReturn     = CreateButton(Page->PageTheme.ReturnRow, 
+        padding,                    
+        0,                       
+        ButtonReturnSzie.x, 
+        ButtonReturnSzie.y, 
+        lv_color_hex3(0xFF0));
 
-    Page->PageTheme.ContentRow = CreateBase(Page->Handle, 0, 40, LV_PCT(100), LV_PCT(100) - 40, lv_color_hex3(0x0F0));
-    CreateThemePage(&Page->PageTheme.Themes[0], Page->PageTheme.ContentRow, "theme1", 3 * 1 + 156 * 0, 4 * 1 + 234 * 0, 156, 234, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[1], Page->PageTheme.ContentRow, "theme2", 3 * 2 + 156 * 1, 4 * 1 + 234 * 0, 156, 234, NULL); 
-    CreateThemePage(&Page->PageTheme.Themes[2], Page->PageTheme.ContentRow, "theme3", 3 * 3 + 156 * 2, 4 * 1 + 234 * 0, 156, 234, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[3], Page->PageTheme.ContentRow, "theme4", 3 * 1 + 156 * 0, 4 * 2 + 234 * 1, 156, 234, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[4], Page->PageTheme.ContentRow, "theme5", 3 * 2 + 156 * 1, 4 * 2 + 234 * 1, 156, 234, NULL);
-    CreateThemePage(&Page->PageTheme.Themes[5], Page->PageTheme.ContentRow, "theme6", 3 * 3 + 156 * 2, 4 * 2 + 234 * 1, 156, 234, NULL);
+    Page->PageTheme.LabelCurrentPage = CreateLabel(Page->PageTheme.ReturnRow,  
+        2 * padding + ButtonReturnSzie.x, 
+        0, 
+        LabelCurrentPageSize.x, 
+        LabelCurrentPageSize.y, 
+        "Theme", lv_color_hex3(0x0F0));
+    //Page->PageTheme.ButtonUSBDownload = CreateButton(Page->PageTheme.ReturnRow, 440 - 6, 6, 40, 40, lv_color_hex3(0xFF0));
+  
+    /*
+        H2
+    */
+    int w = (480 - 3 * padding) / 2, h = w + 2 * padding + 20; 
+    InitHead(&Page->PageTheme.ThemePageLists);
+    for (int i = 0; i < 4; i++)
+    {
+        AddTail(&Page->PageTheme.ThemePageLists, &Page->PageTheme.Themes[i].Node);
+    }
+
+    Page->PageTheme.ContentRow = CreateBase(Page->Handle, ContentRowPos.x, ContentRowPos.y, ContentRowSize.x, ContentRowSize.y, lv_color_hex3(0x0F0));
+    ListNode* Node = Page->PageTheme.ThemePageLists.Head;
+    for (int i = 0; i < Page->PageTheme.ThemePageLists.Count; i++)
+    {
+        ThemePage* TP = (ThemePage*)Node;
+        printf("TP %p %p\n", TP, &TP->Node);
+        Point2 ThemePos = GetThemePos(i, w, h, padding);
+        CreateThemePage(TP, Page->PageTheme.ContentRow, "theme1", ThemePos.x, ThemePos.y, w, h, NULL);
+        Node = Node->Next;
+    }
 }
 
 void CreateSettingsDockPage(SettingsPage* Page)

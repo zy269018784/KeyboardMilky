@@ -3,7 +3,7 @@
 #include "Point2.h"
 #include "Pages/SettingPage/ThemePage/ThemePage.h"
 #include "Pages/SettingPage/WallpapperPage/WallpapperPage.h"
-
+#include "Util/List.h"
 typedef enum {
 	SETTING_HOME_PAGE_NUM = 0,
 	THEME_PAGE_NUM = 1,
@@ -46,20 +46,22 @@ typedef struct SettingsWallpapperPage
 
 	lv_obj_t* ContentRow;
 	WallpapperPage Wallpappers[10];
+
+	List WallpapperPageLists;
 }SettingsWallpapperPage;
 
 typedef struct SettingsThemePage
 {
 	lv_obj_t* Handle;
-	lv_obj_t* Label;
 
 	lv_obj_t* ReturnRow;
 	lv_obj_t* ButtonReturn;
 	lv_obj_t* LabelCurrentPage;
-	lv_obj_t* ButtonUSBDownload;
+	//lv_obj_t* ButtonUSBDownload;
 
 	lv_obj_t* ContentRow;
 	ThemePage Themes[10];
+	List ThemePageLists;
 }SettingsThemePage;
 
 typedef struct SettingsDockPage

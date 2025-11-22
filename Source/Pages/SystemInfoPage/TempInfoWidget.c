@@ -1,10 +1,10 @@
 ﻿#include "TempInfoWidget.h"
 #include "Widgets/Widget.h"
+
 void CreateTempInfoWidget(TempInfoWidget* Widget, lv_obj_t* Parent, int x, int y, int w, int h)
 {
 	Widget->Handle = CreateBase(Parent, x, y, w, h, lv_color_hex3(0x000));
-
-
+  
 	static lv_style_t style_label;
 	lv_style_init(&style_label);
 	lv_style_set_text_color(&style_label, lv_color_hex3(0xFFF));  // 
@@ -17,4 +17,4 @@ void CreateTempInfoWidget(TempInfoWidget* Widget, lv_obj_t* Parent, int x, int y
 
 	Widget->Progress1 = CreateBase(Widget->Handle, 0, h / 2, w, h / 2, lv_color_hex3(0x00F));
 	Widget->Progress2 = CreateBase(Widget->Handle, 0, h / 2, w / 2, h / 2, lv_color_hex3(0xFFF));
-}
+} 

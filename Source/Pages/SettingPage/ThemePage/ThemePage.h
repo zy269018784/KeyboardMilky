@@ -1,20 +1,20 @@
 ﻿#pragma once
 #include <lvgl/lvgl.h>
 #include "Point2.h"
-
+#include "Util/List.h"
 typedef struct ThemePage
 {
-	lv_obj_t* Parent;
+	ListNode Node;
+
 	lv_obj_t* Handle;
 
-	lv_obj_t* ButtonReturn;
-	lv_obj_t* LabelPageTitle;
-
-	lv_obj_t* LabelThemeTitle;
 	lv_obj_t* ImageTheme;
 
 	lv_obj_t* ButtonApply;
 	lv_obj_t* LabelApply;
+	
+	lv_obj_t* LabelThemeTitle;
+	
 }ThemePage;
 
 #ifdef __cplusplus

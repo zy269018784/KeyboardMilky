@@ -5,6 +5,7 @@
 #include "Pages/SettingPage/WallpapperSettingPage/WallpapperPage.h"
 #include "Pages/SettingPage/DockSettingPage/DockSettingPage.h"
 #include "Pages/SettingPage/TimeSettingPage/TimeSettingPage.h"
+#include "Pages/SettingPage/OtherSettingPage/OtherSettingPage.h"
 #include "Pages/SettingPage/UpgradeSettingPage/UpgradeSettingPage.h"
 
 #include "Util/List.h"
@@ -68,11 +69,7 @@ typedef struct SettingsThemePage
 	List ThemePageLists;
 }SettingsThemePage;
 
-typedef struct SettingsOtherPage
-{
-	lv_obj_t* Handle;
-	lv_obj_t* Label;
-}SettingsOtherPage;
+
 
 
 typedef struct SettingsPage

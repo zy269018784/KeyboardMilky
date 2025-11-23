@@ -5,6 +5,7 @@
 #include "Pages/SettingPage/WallpapperSettingPage/WallpapperPage.h"
 #include "Pages/SettingPage/DockSettingPage/DockSettingPage.h"
 #include "Pages/SettingPage/TimeSettingPage/TimeSettingPage.h"
+#include "Pages/SettingPage/UpgradeSettingPage/UpgradeSettingPage.h"
 
 #include "Util/List.h"
 typedef enum {
@@ -73,11 +74,6 @@ typedef struct SettingsOtherPage
 	lv_obj_t* Label;
 }SettingsOtherPage;
 
-typedef struct SettingsUpdatePage
-{
-	lv_obj_t* Handle;
-	lv_obj_t* Label;
-}SettingsUpdatePage;
 
 typedef struct SettingsPage
 {

@@ -82,11 +82,6 @@ void CreateSettingsOtherPage(SettingsPage* Page)
     Page->PageOther.Label = CreateLabel(Page->PageOther.Handle, 0, 0, LV_PCT(100), 50, "PageOther", lv_color_hex3(0xF00));
 }
 
-void CreateSettingsUpdatePage(SettingsPage* Page)
-{
-    Page->PageUpdate.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
-    Page->PageUpdate.Label = CreateLabel(Page->PageUpdate.Handle, 0, 0, LV_PCT(100), 50, "PageUpdate", lv_color_hex3(0xF00));
-}
 
 void ShowSettingPage(SettingsPage* Page, int PageNo)
 {

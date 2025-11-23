@@ -1,8 +1,11 @@
 ﻿#pragma once
 #include <lvgl/lvgl.h>
 #include "Point2.h"
-#include "Pages/SettingPage/ThemePage/ThemePage.h"
-#include "Pages/SettingPage/WallpapperPage/WallpapperPage.h"
+#include "Pages/SettingPage/ThemeSettingPage/ThemePage.h"
+#include "Pages/SettingPage/WallpapperSettingPage/WallpapperPage.h"
+#include "Pages/SettingPage/DockSettingPage/DockSettingPage.h"
+#include "Pages/SettingPage/TimeSettingPage/TimeSettingPage.h"
+
 #include "Util/List.h"
 typedef enum {
 	SETTING_HOME_PAGE_NUM = 0,
@@ -64,18 +67,6 @@ typedef struct SettingsThemePage
 	List ThemePageLists;
 }SettingsThemePage;
 
-typedef struct SettingsDockPage
-{
-	lv_obj_t* Handle;
-	lv_obj_t* Label;
-}SettingsDockPage;
-
-typedef struct SettingsClockPage
-{
-	lv_obj_t* Handle;
-	lv_obj_t* Label;
-}SettingsClockPage;
-
 typedef struct SettingsOtherPage
 {
 	lv_obj_t* Handle;
@@ -113,6 +104,7 @@ extern "C"
 #endif
 	void CreateSettingsPage(SettingsPage* Page, lv_obj_t* Parent);
 	void ShowSettingPage(SettingsPage* Page, int PageNo);
+	Point2 GetThemePos(int LinearIndex, int w, int h, int padding);
 #ifdef __cplusplus
 }
 #endif

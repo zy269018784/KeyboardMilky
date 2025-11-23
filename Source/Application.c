@@ -180,7 +180,8 @@ void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
 void Run(Application* App)
 {
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
-    ShowPage(App, SettingPageNum, WALLPAPER_PAGE_NUM);
+    ShowPage(App, SettingPageNum, CLOCK_PAGE_NUM);
+    //ShowPage(App, MusicPageNum, WALLPAPER_PAGE_NUM);
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
 
 

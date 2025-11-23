@@ -6,7 +6,7 @@
 #include "Pages/ClockPage/ClockPage.h"
 #include "Pages/MusicPage/MusicPage.h"
 #include "Pages/SystemInfoPage/SystemInfoPage.h"
-#include "Pages/SettingPage/ThemePage/ThemePage.h"
+#include "Pages/SettingPage/ThemeSettingPage/ThemePage.h"
 #include "Pages/SettingPage/SettingsPage.h"
 #include "Theme/Theme.h"
 #include "Point2.h"

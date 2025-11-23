@@ -3,12 +3,12 @@
 void CreateCPUInfoWidget(CPUInfoWidget* Widget, lv_obj_t* Parent, int x, int y, int w, int h)
 {
 	Widget->Handle = CreateBase(Parent, x, y, w, h, lv_color_hex3(0x000));
-
+	return;
 
 	static lv_style_t style_label;
 	lv_style_init(&style_label);
 	lv_style_set_text_color(&style_label, lv_color_hex3(0xFFF));  // 
-
+	
 	Widget->Temp1 = CreateLabel(Widget->Handle, 0, 0, 50, h / 2, "42C", lv_color_hex3(0xF00));
 	lv_obj_add_style(Widget->Temp1, &style_label, 0);
 

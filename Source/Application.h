@@ -35,7 +35,7 @@
 #define SystemInfoPageNum 4
 #define SettingPageNum 5
 
-typedef struct Application
+typedef struct
 {
 	lv_display_t* Display;
 	//lv_obj_t* Window;
@@ -66,10 +66,11 @@ extern "C"
 #endif
 	Application* CreateApplication();
 	//void ShowPage(Application* App, int index);
-	void Run(struct Application* App);
-
+	void Run(Application* App);
+	extern Application* App;
 	//Application* CreateApplication2();
-	//void Run2(struct Application* App);
+	//void Run2(Application* App);
 #ifdef __cplusplus
 }
+
 #endif

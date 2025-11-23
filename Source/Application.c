@@ -1,5 +1,8 @@
 ﻿#include "Application.h"
 #include "Widgets/Widget.h"
+#include "EventHandles/EventHandles.h"
+
+Application* App;
 
 void ShowSettingPage(SettingsPage* Page, int PageNo);
 
@@ -49,9 +52,9 @@ void CreateButtonLayout(Application* App, lv_obj_t *Parent)
 
 
 
-struct Application* CreateApplication()
+Application* CreateApplication()
 {
-    struct Application* App = (struct Application*)malloc(sizeof(struct Application));
+    Application* App = (Application*)malloc(sizeof(Application));
     lv_init();
     App->Display = lv_windows_create_display(
         L"Milkyway Keyboard",
@@ -122,11 +125,10 @@ struct Application* CreateApplication()
     CreateMusicPageTheme2(&App->PageMusic, ActiveScreen); // TODO: 切换主题时，重新创建页面？？？
     CreateSettingsPage(&App->PageSettings, ActiveScreen);
     CreateButtonLayout(App, ActiveScreen);
-
     return App;
 }
 
-void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
+void ShowPage(Application* App, int PageIndex, int SubPageIndex)
 {
     lv_obj_add_flag(App->PageHome.Handle, LV_OBJ_FLAG_HIDDEN);
 
@@ -179,11 +181,12 @@ void ShowPage(struct Application* App, int PageIndex, int SubPageIndex)
 
 void Run(Application* App)
 {
+    InitEventHandle();
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
-    ShowPage(App, SettingPageNum, OTHER_PAGE_NUM);
+    ShowPage(App, SystemInfoPageNum, SETTING_HOME_PAGE_NUM);
     //ShowPage(App, MusicPageNum, WALLPAPER_PAGE_NUM);
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
-
+   
 
     while (1)
     {

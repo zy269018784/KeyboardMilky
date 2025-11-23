@@ -17,6 +17,21 @@ typedef struct ThemePage
 	
 }ThemePage;
 
+typedef struct SettingsThemePage
+{
+	lv_obj_t* Handle;
+
+	lv_obj_t* ReturnRow;
+	lv_obj_t* ButtonReturn;
+	lv_obj_t* LabelCurrentPage;
+	//lv_obj_t* ButtonUSBDownload;
+
+	lv_obj_t* ContentRow;
+	ThemePage Themes[10];
+	List ThemePageLists;
+}SettingsThemePage;
+
+
 #ifdef __cplusplus
 extern "C"
 {

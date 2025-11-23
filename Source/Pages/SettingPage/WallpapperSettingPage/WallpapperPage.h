@@ -14,6 +14,22 @@ typedef struct WallpapperPage
 	lv_obj_t* LabelApply;
 }WallpapperPage;
 
+typedef struct SettingsWallpapperPage
+{
+	lv_obj_t* Handle;
+	lv_obj_t* Label;
+
+	lv_obj_t* ReturnRow;
+	lv_obj_t* ButtonReturn;
+	lv_obj_t* LabelCurrentPage;
+	lv_obj_t* ButtonUSBDownload;
+
+	lv_obj_t* ContentRow;
+	WallpapperPage Wallpappers[10];
+
+	List WallpapperPageLists;
+}SettingsWallpapperPage;
+
 #ifdef __cplusplus
 extern "C"
 {

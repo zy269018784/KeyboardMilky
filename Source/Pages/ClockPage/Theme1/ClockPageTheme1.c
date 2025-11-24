@@ -27,6 +27,7 @@ void CreateTheme1ClockPage(ClockPage* Page, lv_obj_t* Parent, Theme* Theme)
         Theme->timer_stop_button_size.x,
         Theme->timer_stop_button_size.y,
         lv_color_hex3(0xF00));
+    lv_obj_add_flag(Page->stop_button, LV_OBJ_FLAG_HIDDEN);
     lv_obj_set_style_radius(Page->stop_button, 25, 0);
     //lv_obj_add_flag(Page->stop_button, LV_OBJ_FLAG_HIDDEN);
 

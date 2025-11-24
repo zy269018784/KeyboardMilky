@@ -20,10 +20,10 @@ void CreateSystemInfoPage(SystemInfoPage* Page, lv_obj_t* Parent)
     Page->Widget3_X = Page->Widget2_X + Page->Widget2_Width  + Padding;
     Page->Widget3_Y = Page->Widget2_Y;
 
-    Page->Widget1 = CreateBase(Page->Handle, Page->Widget1_X, Page->Widget1_Y,  Page->Widget1_Width, Page->Widget1_Height, lv_color_hex3(0x000));
+    Page->Widget1 = CreateBase(Page->Handle, Page->Widget1_X, Page->Widget1_Y, Page->Widget1_Width, Page->Widget1_Height, lv_color_hex3(0x000));
     Page->Widget2 = CreateBase(Page->Handle, Page->Widget2_X, Page->Widget3_Y, Page->Widget2_Width, Page->Widget2_Height, lv_color_hex3(0x000));
     Page->Widget3 = CreateBase(Page->Handle, Page->Widget3_X, Page->Widget3_Y, Page->Widget3_Width, Page->Widget3_Height, lv_color_hex3(0x000));
-    CreateCPUInfoWidget(&Page->CPUInfo, Page->Widget1, 10, 10, 60, 60);
+    CreateCPUInfoWidget(&Page->CPUInfo, Page->Widget1, 10, 0, 200, 200);
 
     CreateTempInfoWidget(&Page->TempInfo, Page->Widget1,   250, 10, 200, 60);
     CreateClockInfoWidget(&Page->ClockInfo, Page->Widget1, 250, 70, 200, 60);

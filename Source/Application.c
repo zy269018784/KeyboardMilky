@@ -102,7 +102,7 @@ Application* CreateApplication()
     App->CurrentTheme.timer_start_button_size.y = 50;
 
     App->CurrentTheme.timer_stop_button_postion.x = 420;
-    App->CurrentTheme.timer_stop_button_postion.y = 70;
+    App->CurrentTheme.timer_stop_button_postion.y = 10;
     App->CurrentTheme.timer_stop_button_size.x = 50;
     App->CurrentTheme.timer_stop_button_size.y = 50;
 
@@ -124,7 +124,9 @@ Application* CreateApplication()
     //CreateMusicPage(&App->PageMusic, ActiveScreen);
     CreateMusicPageTheme2(&App->PageMusic, ActiveScreen); // TODO: 切换主题时，重新创建页面？？？
     CreateSettingsPage(&App->PageSettings, ActiveScreen);
+    CreateKeyboardPage(&App->PageKeyboard, ActiveScreen);
     CreateButtonLayout(App, ActiveScreen);
+    
     return App;
 }
 
@@ -139,6 +141,8 @@ void ShowPage(Application* App, int PageIndex, int SubPageIndex)
 
     lv_obj_add_flag(App->PageMusic.Handle, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(App->PageSettings.Handle, LV_OBJ_FLAG_HIDDEN);
+
+    lv_obj_add_flag(App->PageKeyboard.Handle, LV_OBJ_FLAG_HIDDEN);
 
     switch (PageIndex)
     {
@@ -175,6 +179,9 @@ void ShowPage(Application* App, int PageIndex, int SubPageIndex)
         ShowSettingPage(&App->PageSettings, SubPageIndex);
         lv_obj_set_parent(App->RowLayout, App->PageSettings.Handle);
         lv_obj_set_style_bg_color(App->ButtonSetting, App->CurrentTheme.main_font_color, 0);
+        break;
+    case KeyboardPageNum:
+        lv_obj_clear_flag(App->PageKeyboard.Handle, LV_OBJ_FLAG_HIDDEN);
         break;
     }
 }

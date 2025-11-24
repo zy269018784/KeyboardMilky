@@ -2,28 +2,17 @@
 #include "Widgets/Widget.h"
 void CreateCPUInfoWidget(CPUInfoWidget* Widget, lv_obj_t* Parent, int x, int y, int w, int h)
 {
-	Widget->Handle = CreateBase(Parent, x, y, w, h, lv_color_hex3(0x000));
-	return;
+	Widget->Handle = CreateBase(Parent, x, y, w, h, lv_color_hex3(0x0F0));
 
 	static lv_style_t style_label;
 	lv_style_init(&style_label);
-	lv_style_set_text_color(&style_label, lv_color_hex3(0xFFF));  // 
-	
-	Widget->Temp1 = CreateLabel(Widget->Handle, 0, 0, 50, h / 2, "42C", lv_color_hex3(0xF00));
-	lv_obj_add_style(Widget->Temp1, &style_label, 0);
+	lv_style_set_text_color(&style_label, lv_color_hex3(0xFFF));  
 
-	Widget->Temp2 = CreateLabel(Widget->Handle, 60, 0, 150, h / 2, "Temperature", lv_color_hex3(0xF00));
-	lv_obj_add_style(Widget->Temp2, &style_label, 0);
+	Widget->ArchProgress = CreateArc(Widget->Handle, 10, 10, h - 20, h - 20, lv_color_hex3(0xF00), 0, 360);
 
-	Widget->TempProgress1 = CreateBase(Widget->Handle, 0, h / 2, w, h / 2, lv_color_hex3(0x00F));
-	Widget->TempProgress2 = CreateBase(Widget->Handle, 0, h / 2, w / 2, h / 2, lv_color_hex3(0xFFF));
+	Widget->LabelCPU = CreateLabel(Widget->ArchProgress,   75, 70, 50, 20, "CPU", lv_color_hex3(0xF00));
+	lv_obj_add_style(Widget->LabelCPU, &style_label, 0);
 
-	Widget->Clock1 = CreateLabel(Widget->Handle, 0, 0, 50, h / 2, "4200 MHZ", lv_color_hex3(0xF00));
-	lv_obj_add_style(Widget->Clock1, &style_label, 0);
-
-	Widget->Clock2 = CreateLabel(Widget->Handle, 60, 0, 150, h / 2, "Clock", lv_color_hex3(0xF00));
-	lv_obj_add_style(Widget->Clock2, &style_label, 0);
-
-	Widget->ClockProgress1 = CreateBase(Widget->Handle, 0, h / 2, w, h / 2, lv_color_hex3(0x00F));
-	Widget->ClockProgress2 = CreateBase(Widget->Handle, 0, h / 2, w / 2, h / 2, lv_color_hex3(0xFFF));
+	Widget->LabelUsage = CreateLabel(Widget->ArchProgress, 75, 90, 50, 20, "80%", lv_color_hex3(0xF00));
+	lv_obj_add_style(Widget->LabelUsage, &style_label, 0);
 }

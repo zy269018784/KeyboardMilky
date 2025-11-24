@@ -4,15 +4,9 @@ typedef struct
 {
 	lv_obj_t* Handle;
 
-	lv_obj_t* Temp1;
-	lv_obj_t* Temp2;
-	lv_obj_t* TempProgress1;
-	lv_obj_t* TempProgress2;
-
-	lv_obj_t* Clock1;
-	lv_obj_t* Clock2;
-	lv_obj_t* ClockProgress1;
-	lv_obj_t* ClockProgress2;
+	lv_obj_t* ArchProgress;
+	lv_obj_t* LabelCPU;
+	lv_obj_t* LabelUsage;
 }CPUInfoWidget;
 #ifdef __cplusplus
 extern "C"

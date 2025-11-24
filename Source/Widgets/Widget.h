@@ -10,6 +10,7 @@ lv_obj_t* CreateButton(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int32_
 lv_obj_t* CreateImage(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int32_t h, lv_color_t bgvalue);
 lv_obj_t* CreateSwitch(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int32_t h, lv_color_t bgvalue);
 lv_obj_t* CreateDropDown(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int32_t h, lv_color_t bgvalue);
+lv_obj_t* CreateArc(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int32_t h, lv_color_t bgvalue, lv_value_precise_t start, lv_value_precise_t end);
 #ifdef __cplusplus
 }
 #endif

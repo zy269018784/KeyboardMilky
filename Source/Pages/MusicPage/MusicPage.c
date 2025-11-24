@@ -11,7 +11,8 @@ void CreateSingerNameLabelDefaultTheme(MusicPage* Page);
 void CreateProgressBarDefaultTheme(MusicPage* Page);
 void CreateCtrlBtnsTheme2(MusicPage* Page);
 
-void CreateMusicPage(MusicPage* Page, lv_obj_t* Parent) {
+void CreateMusicPage(MusicPage* Page, lv_obj_t* Parent)
+{
     Page->Parent = Parent;
     Page->Handle = lv_obj_create(Parent);
 

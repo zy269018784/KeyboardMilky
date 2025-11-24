@@ -8,6 +8,7 @@
 #include "Pages/SystemInfoPage/SystemInfoPage.h"
 #include "Pages/SettingPage/ThemeSettingPage/ThemePage.h"
 #include "Pages/SettingPage/SettingsPage.h"
+#include "Pages/KeyboardPage/KeyboardPage.h"
 #include "Theme/Theme.h"
 #include "Point2.h"
 
@@ -34,7 +35,7 @@
 #define ClockPageNum 3
 #define SystemInfoPageNum 4
 #define SettingPageNum 5
-
+#define KeyboardPageNum 6
 typedef struct
 {
 	lv_display_t* Display;
@@ -56,6 +57,8 @@ typedef struct
 	ClockPage PageClock;
 	SystemInfoPage PageSystemInfo;
 	SettingsPage PageSettings;
+
+	KeyboardPage PageKeyboard;
 	int CurrentPage;
 }Application;
 

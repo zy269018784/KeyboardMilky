@@ -197,6 +197,43 @@ lv_obj_t* CreateDropDown(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int3
     return Handle;
 }
 
+lv_obj_t* CreateArc(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int32_t h, lv_color_t bgvalue, lv_value_precise_t start, lv_value_precise_t end)
+{
+    lv_obj_t* Handle = NULL;
+
+    Handle  = lv_arc_create(Parent);
+   // lv_arc_set_rotation(Handle, 135);
+    lv_arc_set_bg_angles(Handle, start, end);
+    lv_arc_set_value(Handle, 10);
+    lv_obj_set_style_arc_width(Handle, 0, LV_PART_KNOB);
+    /*
+        设置位置和尺寸
+    */
+    lv_obj_set_pos(Handle, x, y);
+    lv_obj_set_size(Handle, w, h);
+
+    /*
+        设置盒子模型
+    */
+    lv_obj_set_style_pad_all(Handle, 0, 0);
+    lv_obj_set_style_border_width(Handle, 0, 0);
+    lv_obj_set_style_margin_all(Handle, 0, 0);
+    /*
+      设置背景颜色
+    */
+    lv_obj_set_style_bg_color(Handle, bgvalue, 0);
+    /*
+        设置radius
+    */
+    lv_obj_set_style_radius(Handle, 0, 0);
+    /*
+        关闭滚动条
+    */
+    lv_obj_clear_flag(Handle, LV_OBJ_FLAG_SCROLLABLE);
+
+    return Handle;
+}
+
 /*
     Base
         Theme image

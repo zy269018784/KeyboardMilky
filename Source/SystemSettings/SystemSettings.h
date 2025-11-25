@@ -1,5 +1,6 @@
 ﻿#pragma once
-
+#include <stdint.h>
+#include <stdbool.h>
 typedef struct
 {
 	/*
@@ -33,3 +34,12 @@ typedef struct
 	int ScreenOffTime;		// 单位分钟
 
 }SystemSettings;
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+	void ResetSystemSettings(SystemSettings* SS);
+#ifdef __cplusplus
+}
+#endif

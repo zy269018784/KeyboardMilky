@@ -1,7 +1,7 @@
 ﻿#include "Application.h"
 #include "Widgets/Widget.h"
 #include "EventHandles/EventHandles.h"
-
+#include "API/API.h"
 Application* App;
 
 void ShowSettingPage(SettingsPage* Page, int PageNo);
@@ -52,9 +52,9 @@ void CreateButtonLayout(Application* App, lv_obj_t *Parent)
 
 
 
-Application* CreateApplication()
+void CreateApplication()
 {
-    Application* App = (Application*)malloc(sizeof(Application));
+    App = (Application*)malloc(sizeof(Application));
     lv_init();
     App->Display = lv_windows_create_display(
         L"Milkyway Keyboard",
@@ -106,6 +106,10 @@ Application* CreateApplication()
     App->CurrentTheme.timer_stop_button_size.x = 50;
     App->CurrentTheme.timer_stop_button_size.y = 50;
 
+    /*
+        默认设置
+    */
+    ResetSystemSettings(&App->Setings);
 
     CreateHomePage(&App->PageHome, ActiveScreen);
     CreateSystemInfoPage(&App->PageSystemInfo, ActiveScreen);
@@ -127,7 +131,8 @@ Application* CreateApplication()
     CreateKeyboardPage(&App->PageKeyboard, ActiveScreen);
     CreateButtonLayout(App, ActiveScreen);
     
-    return App;
+
+    //return App;
 }
 
 void ShowPage(Application* App, int PageIndex, int SubPageIndex)
@@ -190,10 +195,10 @@ void Run(Application* App)
 {
     InitEventHandle();
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
-    ShowPage(App, SystemInfoPageNum, SETTING_HOME_PAGE_NUM);
+    ShowPage(App, ClockPageNum, SETTING_HOME_PAGE_NUM);
     //ShowPage(App, MusicPageNum, WALLPAPER_PAGE_NUM);
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
-   
+
 
     while (1)
     {

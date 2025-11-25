@@ -2,7 +2,7 @@
 #include "API/API.h"
 int main(int argc, char** argv)
 {
-	App = CreateApplication();
+	CreateApplication();
 	InitBuffer();
 
 	//SetTemp(123);

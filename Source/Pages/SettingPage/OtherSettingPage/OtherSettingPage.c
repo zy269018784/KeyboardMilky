@@ -1,7 +1,7 @@
 ﻿#include "OtherSettingPage.h"
 #include "../SettingsPage.h"
 #include "Widgets/Widget.h"
-
+#include "API/API.h"
 void CreateSettingsOtherPage(SettingsPage* Page)
 {
     Page->PageOther.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
@@ -30,4 +30,6 @@ void CreateSettingsOtherPage(SettingsPage* Page)
     y = 170;
     Page->PageOther.ButtonFactoryReset = CreateButton(Page->PageOther.Handle, 0 + 10, y, 200, 50, lv_color_hex3(0xF00));
     Page->PageOther.LabelFactoryReset = CreateLabel(Page->PageOther.ButtonFactoryReset, 0, 0, LV_PCT(100), LV_PCT(100), "FactoryReset", lv_color_hex3(0xF00));
+
+    ResetOtherSettingPage(&Page->PageOther);
 }

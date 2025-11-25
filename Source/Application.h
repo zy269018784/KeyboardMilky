@@ -65,6 +65,10 @@ typedef struct
 		设置
 	*/
 	SystemSettings Setings;
+	/*
+		时钟
+	*/
+	lv_timer_t* Clock;
 }Application;
 
 
@@ -72,7 +76,7 @@ typedef struct
 extern "C"
 {
 #endif
-	Application* CreateApplication();
+	void CreateApplication();
 	//void ShowPage(Application* App, int index);
 	void Run(Application* App);
 	extern Application* App;

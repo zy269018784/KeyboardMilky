@@ -84,3 +84,49 @@ void SetDownloadSpeed(int v)
         lv_label_set_text_static(App->PageSystemInfo.NetworkInfo.Widget[6], BufferDownSpeed);
     }
 }
+
+
+void ResetTimeSettingPage(SettingsClockPage* Page)
+{
+    lv_obj_remove_state(Page->SwitchHomePageShowTime, LV_STATE_CHECKED);
+    if (App->Setings.HomePageShowTime)
+        lv_obj_add_state(Page->SwitchHomePageShowTime, LV_STATE_CHECKED);
+
+    lv_obj_remove_state(Page->SwitchAutoGetTime, LV_STATE_CHECKED);
+    if (App->Setings.AutoGetTime)
+        lv_obj_add_state(Page->SwitchAutoGetTime, LV_STATE_CHECKED);
+    printf("App->Setings.TimePosLeft %d\n", App->Setings.TimePosLeft);
+
+    lv_dropdown_set_selected(Page->DropdownTimePos, 1);
+    if (App->Setings.TimePosLeft)
+        lv_dropdown_set_selected(Page->DropdownTimePos, 0);
+
+    lv_dropdown_set_selected(Page->DropdownTimeZone, App->Setings.TimeZone);
+    lv_dropdown_set_selected(Page->DropdownDateFormat, App->Setings.DateFormat);
+
+    lv_dropdown_set_selected(Page->DropdownTimeFormat, 0);
+    if (App->Setings.TimeFormat24)
+        lv_dropdown_set_selected(Page->DropdownTimeFormat, 1);
+}
+
+void ResetDockSettingPage(SettingsDockPage* Page)
+{
+    lv_obj_remove_state(Page->SwitchShowDock, LV_STATE_CHECKED);
+    if (App->Setings.ShowDock)
+        lv_obj_add_state(Page->SwitchShowDock, LV_STATE_CHECKED);
+
+    lv_obj_remove_state(Page->SwitchAutoHideDock, LV_STATE_CHECKED);
+    if (App->Setings.AutoHideDock)
+        lv_obj_add_state(Page->SwitchAutoHideDock, LV_STATE_CHECKED);
+}
+
+void ResetOtherSettingPage(SettingsOtherPage* Page)
+{
+    lv_obj_remove_state(Page->SwitchAutoScreenOff, LV_STATE_CHECKED);
+    if (App->Setings.AutoScreenOff)
+        lv_obj_add_state(Page->SwitchAutoScreenOff, LV_STATE_CHECKED);
+
+    lv_obj_remove_state(Page->SwitchPogoPin, LV_STATE_CHECKED);
+    if (App->Setings.PogoPin)
+        lv_obj_add_state(Page->SwitchPogoPin, LV_STATE_CHECKED);
+}

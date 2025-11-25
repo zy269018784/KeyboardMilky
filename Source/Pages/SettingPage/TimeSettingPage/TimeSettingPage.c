@@ -1,6 +1,9 @@
 #include "TimeSettingPage.h"
 #include "../SettingsPage.h"
 #include "Widgets/Widget.h"
+#include "Application.h"
+#include "SystemSettings/SystemSettings.h"
+#include "API/API.h"
 void CreateSettingsClockPage(SettingsPage* Page)
 {
     Page->PageClock.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
@@ -117,6 +120,8 @@ void CreateSettingsClockPage(SettingsPage* Page)
     Page->PageClock.LabelHomePageShowTime = CreateLabel(Page->PageClock.Handle, 6, y, 200, 20, "Home Page Show Time", lv_color_hex3(0xFF0));
     Page->PageClock.SwitchHomePageShowTime = CreateSwitch(Page->PageClock.Handle, 200, y, 200, 20, lv_color_hex3(0xFF0));
 
+
+
     y = 250;
     Page->PageClock.LabelTimeFormat = CreateLabel(Page->PageClock.Handle, 6, y, 200, 20, "Time Format", lv_color_hex3(0xFF0));
     Page->PageClock.DropdownTimeFormat = CreateDropDown(Page->PageClock.Handle, 200, y, 200, 20, lv_color_hex3(0xFF0));
@@ -146,4 +151,9 @@ void CreateSettingsClockPage(SettingsPage* Page)
         "Left\n"
         "Right\n"
     );
+
+    ResetTimeSettingPage(&Page->PageClock);
 }
+
+
+

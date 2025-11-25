@@ -60,16 +60,32 @@ void  CallbackShowUpgradeSettingPage(lv_event_t* e)
 
 void  CallbackClockStart(lv_event_t* e)
 {
-	//lv_obj_clear_flag(App->PageClock.stop_button, LV_OBJ_FLAG_HIDDEN);
-	//lv_obj_add_flag(App->PageClock.start_button, LV_OBJ_FLAG_HIDDEN);
+	lv_obj_clear_flag(App->PageClock.stop_button, LV_OBJ_FLAG_HIDDEN);
+	lv_obj_add_flag(App->PageClock.start_button, LV_OBJ_FLAG_HIDDEN);
 
-	ShowPage(App, ClockPageNum, 1);
+	lv_timer_resume(App->Clock);
+	//ShowPage(App, ClockPageNum, 1);
 }
 
 void  CallbackClockStop(lv_event_t* e)
 {
 	lv_obj_clear_flag(App->PageClock.start_button, LV_OBJ_FLAG_HIDDEN);
 	lv_obj_add_flag(App->PageClock.stop_button, LV_OBJ_FLAG_HIDDEN);
+
+	lv_timer_reset(App->Clock);
+}
+
+
+void  CallbackClockTimeUp(lv_event_t* e)
+{
+	printf("CallbackClockTimeUp\n");
+	lv_timer_pause(App->Clock);
+
+	lv_obj_add_flag(App->PageClock.Handle, LV_OBJ_FLAG_HIDDEN);
+	lv_obj_clear_flag(App->PageClock.TimeUpPageHandle, LV_OBJ_FLAG_HIDDEN);
+
+	lv_obj_add_flag(App->PageClock.stop_button, LV_OBJ_FLAG_HIDDEN);
+	lv_obj_clear_flag(App->PageClock.start_button, LV_OBJ_FLAG_HIDDEN);
 }
 
 void  CallbackClockReturn(lv_event_t* e)
@@ -111,6 +127,14 @@ void  CallbackHomePageShowTime(lv_event_t* e)
 	App->Setings.HomePageShowTime = false;
 	if (lv_obj_has_state(obj, LV_STATE_CHECKED))
 		App->Setings.HomePageShowTime = true;
+
+	lv_obj_clear_flag(App->PageHome.LabelTime, LV_OBJ_FLAG_HIDDEN);
+	lv_obj_clear_flag(App->PageHome.LabelWeekDay, LV_OBJ_FLAG_HIDDEN);
+	if (!App->Setings.HomePageShowTime)
+	{
+		lv_obj_add_flag(App->PageHome.LabelTime, LV_OBJ_FLAG_HIDDEN);
+		lv_obj_add_flag(App->PageHome.LabelWeekDay, LV_OBJ_FLAG_HIDDEN);
+	}
 	printf("HomePageShowTime: %d\n", App->Setings.HomePageShowTime);
 }
 
@@ -267,6 +291,13 @@ void InitEventHandle()
 	lv_obj_add_event_cb(App->PageSettings.PageHome.ButtonClock,			CallbackShowClockSettingPage,		LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->PageSettings.PageHome.ButtonOther,			CallbackShowOtherSettingPage,		LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->PageSettings.PageHome.ButtonUpdate,		CallbackShowUpgradeSettingPage,		LV_EVENT_CLICKED, NULL);	
+
+	/*
+		时钟
+	*/
+	App->Clock = lv_timer_create(&CallbackClockTimeUp, 5000, NULL);
+	lv_timer_pause(App->Clock);
+
 	/*
 		主题页
 	*/
@@ -279,9 +310,7 @@ void InitEventHandle()
 		时钟页
 	*/
 	lv_obj_add_event_cb(App->PageClock.start_button, CallbackClockStart, LV_EVENT_CLICKED, NULL);
-
 	lv_obj_add_event_cb(App->PageClock.stop_button, CallbackClockStop, LV_EVENT_CLICKED, NULL);
-
 	lv_obj_add_event_cb(App->PageClock.back_button, CallbackClockReturn, LV_EVENT_CLICKED, NULL);
 
 	/*

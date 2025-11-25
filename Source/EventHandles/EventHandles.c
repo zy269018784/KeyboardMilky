@@ -5,7 +5,7 @@ void ShowPage(Application* App, int PageIndex, int SubPageIndex);
 void  CallbackShowHomePage(lv_event_t* e)
 {  
 	ShowPage(App, HomePageNum, 0);
-	ShowPage(App, KeyboardPageNum, 0);
+	//ShowPage(App, KeyboardPageNum, 0);
 }
 
 void CallbackShowMusicPage(lv_event_t* e)

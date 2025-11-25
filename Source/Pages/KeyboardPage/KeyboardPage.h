@@ -5,6 +5,9 @@ typedef struct
 {
 	lv_obj_t* Handle;
 
+	lv_obj_t* ButtonKey[9];
+	lv_obj_t* LabelKey[9];
+
 }KeyboardPage;
 
 #ifdef __cplusplus

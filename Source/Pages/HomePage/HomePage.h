@@ -18,6 +18,11 @@ typedef struct HomePage
 		音量控件
 	*/
 	VolumeWidget Volume;
+	/*
+		时间
+	*/
+	lv_obj_t* LabelTime;
+	lv_obj_t* LabelWeekDay;
 }HomePage;
 
 

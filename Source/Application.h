@@ -9,6 +9,7 @@
 #include "Pages/SettingPage/ThemeSettingPage/ThemePage.h"
 #include "Pages/SettingPage/SettingsPage.h"
 #include "Pages/KeyboardPage/KeyboardPage.h"
+#include "SystemSettings/SystemSettings.h"
 #include "Theme/Theme.h"
 #include "Point2.h"
 
@@ -60,6 +61,10 @@ typedef struct
 
 	KeyboardPage PageKeyboard;
 	int CurrentPage;
+	/*
+		设置
+	*/
+	SystemSettings Setings;
 }Application;
 
 

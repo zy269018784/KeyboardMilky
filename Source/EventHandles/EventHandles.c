@@ -78,6 +78,176 @@ void  CallbackClockReturn(lv_event_t* e)
 	lv_obj_clear_flag(App->PageClock.Handle, LV_OBJ_FLAG_HIDDEN);
 }
 
+void  CallbackAutoHideDock(lv_event_t* e)
+{
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	App->Setings.AutoHideDock = false;
+	if (lv_obj_has_state(obj, LV_STATE_CHECKED))
+		App->Setings.AutoHideDock = true;
+	printf("AutoHideDock: %d\n", App->Setings.AutoHideDock);
+}
+
+void  CallbackShowDock(lv_event_t* e)
+{
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	App->Setings.ShowDock = false;
+	if (lv_obj_has_state(obj, LV_STATE_CHECKED))
+		App->Setings.ShowDock = true;
+	printf("ShowDock: %d\n", App->Setings.ShowDock);
+}
+
+void  CallbackAutoGetTime(lv_event_t* e)
+{
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	App->Setings.AutoGetTime = false;
+	if (lv_obj_has_state(obj, LV_STATE_CHECKED))
+		App->Setings.AutoGetTime = true;
+	printf("AutoGetTime: %d\n", App->Setings.AutoGetTime);
+}
+
+void  CallbackHomePageShowTime(lv_event_t* e)
+{
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	App->Setings.HomePageShowTime = false;
+	if (lv_obj_has_state(obj, LV_STATE_CHECKED))
+		App->Setings.HomePageShowTime = true;
+	printf("HomePageShowTime: %d\n", App->Setings.HomePageShowTime);
+}
+
+void  CallbackYear(lv_event_t* e)
+{
+	//printf("CallbackYear\n");
+	lv_event_code_t code = lv_event_get_code(e);
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	if (code == LV_EVENT_VALUE_CHANGED) {
+		lv_dropdown_get_selected_str(obj, App->Setings.Year, sizeof(App->Setings.Year));
+		printf("year: %s\n", App->Setings.Year);
+	}
+}
+
+void  CallbackMonth(lv_event_t* e)
+{
+	lv_event_code_t code = lv_event_get_code(e);
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	if (code == LV_EVENT_VALUE_CHANGED) {
+		lv_dropdown_get_selected_str(obj, App->Setings.Month, sizeof(App->Setings.Month));
+		printf("Month: %s\n", App->Setings.Month);
+	}
+}
+
+void  CallbackDay(lv_event_t* e)
+{
+	lv_event_code_t code = lv_event_get_code(e);
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	if (code == LV_EVENT_VALUE_CHANGED) {
+		lv_dropdown_get_selected_str(obj, App->Setings.Day, sizeof(App->Setings.Day));
+		printf("Day: %s\n", App->Setings.Day);
+	}
+}
+
+void  CallbackHour(lv_event_t* e)
+{
+	lv_event_code_t code = lv_event_get_code(e);
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	if (code == LV_EVENT_VALUE_CHANGED) {
+		lv_dropdown_get_selected_str(obj, App->Setings.Hour, sizeof(App->Setings.Hour));
+		printf("Hour: %s\n", App->Setings.Hour);
+	}
+}
+
+void  CallbackMinute(lv_event_t* e)
+{
+	lv_event_code_t code = lv_event_get_code(e);
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	if (code == LV_EVENT_VALUE_CHANGED) {
+		lv_dropdown_get_selected_str(obj, App->Setings.Minute, sizeof(App->Setings.Minute));
+		printf("Minute: %s\n", App->Setings.Minute);
+	}
+}
+
+void  CallbackSecond(lv_event_t* e)
+{
+	lv_event_code_t code = lv_event_get_code(e);
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	if (code == LV_EVENT_VALUE_CHANGED) {
+		lv_dropdown_get_selected_str(obj, App->Setings.Second, sizeof(App->Setings.Second));
+		printf("Second: %s\n", App->Setings.Second);
+	}
+}
+
+void  CallbackTimeZone(lv_event_t* e)
+{
+	lv_event_code_t code = lv_event_get_code(e);
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	if (code == LV_EVENT_VALUE_CHANGED) {
+		App->Setings.TimeZone = lv_dropdown_get_selected(obj);
+		printf("TimeZone: %u\n", App->Setings.TimeZone);
+	}
+}
+
+void  CallbackTimeFormat(lv_event_t* e)
+{
+	lv_event_code_t code = lv_event_get_code(e);
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	if (code == LV_EVENT_VALUE_CHANGED) {
+		auto Index = lv_dropdown_get_selected(obj);
+		App->Setings.TimeFormat24 = false;
+		if (1 == Index)
+			App->Setings.TimeFormat24 = true;
+		printf("TimeFormat24: %d\n", App->Setings.TimeFormat24);
+	}
+}
+
+void  CallbackDateFormat(lv_event_t* e)
+{
+	lv_event_code_t code = lv_event_get_code(e);
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	if (code == LV_EVENT_VALUE_CHANGED) {
+		App->Setings.DateFormat = lv_dropdown_get_selected(obj);
+		printf("DateFormat: %u\n", App->Setings.DateFormat);
+	}
+}
+
+void  CallbackTimePos(lv_event_t* e)
+{
+	lv_event_code_t code = lv_event_get_code(e);
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	if (code == LV_EVENT_VALUE_CHANGED) {
+		auto Index = lv_dropdown_get_selected(obj);
+		App->Setings.TimePosLeft = false;
+		if (0 == Index)
+			App->Setings.TimePosLeft = true;
+		printf("TimePosLeft: %d\n", App->Setings.TimePosLeft);
+	}
+}
+
+void  CallbackAutoScreenOff(lv_event_t* e)
+{
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	App->Setings.AutoScreenOff = false;
+	if (lv_obj_has_state(obj, LV_STATE_CHECKED))
+		App->Setings.AutoScreenOff = true;
+	printf("AutoScreenOff: %d\n", App->Setings.AutoScreenOff);
+}
+
+void  CallbackPogoPin(lv_event_t* e)
+{
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	App->Setings.PogoPin = false;
+	if (lv_obj_has_state(obj, LV_STATE_CHECKED))
+		App->Setings.PogoPin = true;
+	printf("PogoPin: %d\n", App->Setings.PogoPin);
+}
+
+void  CallbackAutoScreenOffTime(lv_event_t* e)
+{
+	lv_event_code_t code = lv_event_get_code(e);
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	if (code == LV_EVENT_VALUE_CHANGED) {
+		App->Setings.ScreenOffTime = lv_dropdown_get_selected(obj);
+		printf("ScreenOffTime: %u\n", App->Setings.ScreenOffTime);
+	}
+}
 
 void InitEventHandle()
 {
@@ -113,4 +283,35 @@ void InitEventHandle()
 	lv_obj_add_event_cb(App->PageClock.stop_button, CallbackClockStop, LV_EVENT_CLICKED, NULL);
 
 	lv_obj_add_event_cb(App->PageClock.back_button, CallbackClockReturn, LV_EVENT_CLICKED, NULL);
+
+	/*
+		Clock设置
+	*/
+	lv_obj_add_event_cb(App->PageSettings.PageClock.SwitchAutoGetTime, CallbackAutoGetTime, LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageClock.SwitchHomePageShowTime, CallbackHomePageShowTime, LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownYear,	CallbackYear, LV_EVENT_ALL, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownMonth,	CallbackMonth, LV_EVENT_ALL, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownDay,	CallbackDay, LV_EVENT_ALL, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownHour,	CallbackHour, LV_EVENT_ALL, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownMinute, CallbackMinute, LV_EVENT_ALL, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownSecond, CallbackSecond, LV_EVENT_ALL, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownSecond, CallbackSecond, LV_EVENT_ALL, NULL);
+
+	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownTimeZone,   CallbackTimeZone, LV_EVENT_ALL, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownTimeFormat, CallbackTimeFormat, LV_EVENT_ALL, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownDateFormat, CallbackDateFormat, LV_EVENT_ALL, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownTimePos, CallbackTimePos, LV_EVENT_ALL, NULL);
+
+	/*
+		Dock设置
+	*/
+	lv_obj_add_event_cb(App->PageSettings.PageDock.SwitchAutoHideDock, CallbackAutoHideDock, LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageDock.SwitchShowDock, CallbackShowDock, LV_EVENT_CLICKED, NULL);
+
+	/*
+		其他设置
+	*/
+	lv_obj_add_event_cb(App->PageSettings.PageOther.SwitchAutoScreenOff,	CallbackAutoScreenOff, LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageOther.SwitchPogoPin,			CallbackPogoPin, LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageOther.DropdownAutoScreenOffTime, CallbackAutoScreenOffTime, LV_EVENT_ALL, NULL);
 }

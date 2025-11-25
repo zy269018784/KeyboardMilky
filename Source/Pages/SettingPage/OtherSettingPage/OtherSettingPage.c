@@ -12,12 +12,12 @@ void CreateSettingsOtherPage(SettingsPage* Page)
     Page->PageOther.SwitchAutoScreenOff = CreateSwitch(Page->PageOther.Handle, 200, y, 200, 20, lv_color_hex3(0xFF0));
 
     y = 60;
-    Page->PageOther.LabelAutoScreenOffTime = CreateLabel(Page->PageOther.Handle, 6, y, 200, 20, "Time Zone", lv_color_hex3(0xFF0));
+    Page->PageOther.LabelAutoScreenOffTime = CreateLabel(Page->PageOther.Handle, 6, y, 200, 20, "Screen Off Time", lv_color_hex3(0xFF0));
     Page->PageOther.DropdownAutoScreenOffTime = CreateDropDown(Page->PageOther.Handle, 200, y, 200, 20, lv_color_hex3(0xFF0));
     lv_dropdown_set_options(Page->PageOther.DropdownAutoScreenOffTime,
         "1 min\n"
         "2 min\n"
-        "51 min\n"
+        "5 min\n"
         "10 min\n"
         "20 min\n"
         "30 min\n"

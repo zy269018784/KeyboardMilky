@@ -30,13 +30,13 @@
 //}Theme;
 
 
-
+#define KeyboardPageNum 0
 #define HomePageNum 1
 #define MusicPageNum 2
 #define ClockPageNum 3
 #define SystemInfoPageNum 4
 #define SettingPageNum 5
-#define KeyboardPageNum 6
+
 typedef struct
 {
 	lv_display_t* Display;
@@ -58,8 +58,8 @@ typedef struct
 	ClockPage PageClock;
 	SystemInfoPage PageSystemInfo;
 	SettingsPage PageSettings;
-
 	KeyboardPage PageKeyboard;
+
 	int CurrentPage;
 	/*
 		设置
@@ -69,6 +69,7 @@ typedef struct
 		时钟
 	*/
 	lv_timer_t* Clock;
+	lv_timer_t* VolumeTimer;
 }Application;
 
 

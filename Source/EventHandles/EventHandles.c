@@ -274,6 +274,66 @@ void  CallbackAutoScreenOffTime(lv_event_t* e)
 	}
 }
 
+/*
+	屏幕滑动事件
+*/
+void  CallbackGesture(lv_event_t* e)
+{
+	lv_event_code_t code = lv_event_get_code(e);
+	lv_obj_t* obj = lv_event_get_target(e);
+
+	if (code == LV_EVENT_GESTURE) {
+		lv_dir_t dir = lv_indev_get_gesture_dir(lv_event_get_indev(e));
+
+		switch (dir) {
+		case LV_DIR_RIGHT:
+			App->CurrentPage -= 1;
+			if (App->CurrentPage < 0)
+				App->CurrentPage = KeyboardPageNum;
+			ShowPage(App, App->CurrentPage, 0);
+			printf("left\n");
+			break;
+		case LV_DIR_LEFT:
+			App->CurrentPage += 1;
+			if (SettingPageNum < App->CurrentPage)
+				App->CurrentPage = HomePageNum;
+			ShowPage(App, App->CurrentPage, 0);
+			printf("right\n");
+			break;
+		case LV_DIR_TOP:
+			lv_obj_clear_flag(App->PageHome.Volume.Handle, LV_OBJ_FLAG_HIDDEN);
+			lv_timer_reset(App->VolumeTimer);
+			lv_timer_resume(App->VolumeTimer);
+			printf("top\n");
+			break;
+		case LV_DIR_BOTTOM:
+			lv_obj_add_flag(App->PageHome.Volume.Handle, LV_OBJ_FLAG_HIDDEN);
+			printf("bottom\n");
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+void  CallbackVoulueTimeOut(lv_event_t* e)
+{
+	lv_obj_add_flag(App->PageHome.Volume.Handle, LV_OBJ_FLAG_HIDDEN);
+	lv_timer_pause(App->VolumeTimer);
+}
+
+void  CallbackLongPressed(lv_event_t* e)
+{
+	lv_event_code_t code = lv_event_get_code(e);
+	//if (code == LV_EVENT_LONG_PRESSED || code == LV_EVENT_LONG_PRESSED_REPEAT)
+	//printf("long pressed\n");
+
+	if (code == LV_EVENT_GESTURE)
+	{
+		CallbackGesture(e);
+	}
+}
+
 void InitEventHandle()
 {
 	if (!App)
@@ -281,11 +341,31 @@ void InitEventHandle()
 		printf("App is Null\n");
 		return;
 	}
+
+	/*
+		滑动事件
+	*/
+	//lv_obj_add_event_cb(lv_screen_active(), CallbackGesture, LV_EVENT_GESTURE, NULL);
+	
+	/*
+		长按事件
+	*/
+	//lv_indev_set_long_press_time(lv_indev_get_next(NULL), 500);
+	//lv_indev_set_long_press_repeat_time(lv_indev_get_next(NULL), 150);
+	lv_obj_add_event_cb(lv_screen_active(), CallbackLongPressed, LV_EVENT_ALL, NULL);
+
+	/*
+		Dock栏
+	*/
 	lv_obj_add_event_cb(App->ButtonHomePage,							CallbackShowHomePage,				LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->ButtonMusic,								CallbackShowMusicPage,				LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->ButtonClock,								CallbackShowClockPage,				LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->ButtonSystemInfo,							CallbackShowSystemInfoPage,			LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->ButtonSetting,								CallbackShowSettingPage,			LV_EVENT_CLICKED, NULL);
+
+	/*
+		设置主页
+	*/
 	lv_obj_add_event_cb(App->PageSettings.PageHome.ButtonTheme,			CallbackShowThemeSettingPage,		LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->PageSettings.PageHome.ButtonWallpapper,	CallbackShowWallpapperSettingPage,	LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->PageSettings.PageHome.ButtonDock,			CallbackShowDockSettingPage,		LV_EVENT_CLICKED, NULL);
@@ -298,6 +378,9 @@ void InitEventHandle()
 	*/
 	App->Clock = lv_timer_create(&CallbackClockTimeUp, 5000, NULL);
 	lv_timer_pause(App->Clock);
+
+	App->VolumeTimer = lv_timer_create(&CallbackVoulueTimeOut, 5000, NULL);
+	lv_timer_pause(App->VolumeTimer);
 
 	/*
 		主题页

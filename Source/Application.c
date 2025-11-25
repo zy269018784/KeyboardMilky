@@ -84,11 +84,7 @@ void CreateApplication()
     lv_obj_set_style_border_width(ActiveScreen, 0, 0);
     lv_obj_set_style_margin_all(ActiveScreen, 0, 0);
 
-    //App->Window = lv_win_create(ActiveScreen);
-    //lv_obj_set_pos(App->Window, 0, 0);
-    //lv_obj_set_size(App->Window, 480, 480);
-    //lv_obj_t* header = lv_win_get_header(App->Window);
-    //lv_obj_add_flag(header, LV_OBJ_FLAG_HIDDEN);
+    App->CurrentPage = HomePageNum;
 
     App->CurrentTheme.main_font_color = lv_color_hex3(0x00F);
     App->CurrentTheme.sub_font_color = lv_color_hex3(0x0F0);
@@ -106,6 +102,8 @@ void CreateApplication()
     App->CurrentTheme.timer_stop_button_size.x = 50;
     App->CurrentTheme.timer_stop_button_size.y = 50;
 
+
+    lv_indev_set_long_press_time(ActiveScreen, 500);
     /*
         默认设置
     */

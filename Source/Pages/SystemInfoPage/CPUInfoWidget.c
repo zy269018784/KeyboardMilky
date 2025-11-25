@@ -9,6 +9,8 @@ void CreateCPUInfoWidget(CPUInfoWidget* Widget, lv_obj_t* Parent, int x, int y, 
 	lv_style_set_text_color(&style_label, lv_color_hex3(0xFFF));  
 
 	Widget->ArchProgress = CreateArc(Widget->Handle, 10, 10, h - 20, h - 20, lv_color_hex3(0xF00), 0, 360);
+	lv_obj_remove_style(Widget->ArchProgress, NULL, LV_PART_KNOB);
+
 
 	Widget->LabelCPU = CreateLabel(Widget->ArchProgress,   75, 70, 50, 20, "CPU", lv_color_hex3(0xF00));
 	lv_obj_add_style(Widget->LabelCPU, &style_label, 0);

@@ -63,6 +63,7 @@ void  CallbackClockStart(lv_event_t* e)
 	lv_obj_clear_flag(App->PageClock.stop_button, LV_OBJ_FLAG_HIDDEN);
 	lv_obj_add_flag(App->PageClock.start_button, LV_OBJ_FLAG_HIDDEN);
 
+	lv_timer_reset(App->Clock);
 	lv_timer_resume(App->Clock);
 	//ShowPage(App, ClockPageNum, 1);
 }
@@ -72,7 +73,7 @@ void  CallbackClockStop(lv_event_t* e)
 	lv_obj_clear_flag(App->PageClock.start_button, LV_OBJ_FLAG_HIDDEN);
 	lv_obj_add_flag(App->PageClock.stop_button, LV_OBJ_FLAG_HIDDEN);
 
-	lv_timer_reset(App->Clock);
+	lv_timer_pause(App->Clock);
 }
 
 

@@ -1,59 +1,47 @@
-#pragma once
+ï»¿#pragma once
 #include "lvgl/lvgl.h"
 /*
-	ÐèÇó:
-		Ê±¼äÈÕÆÚÉèÖÃ			×Ô¶¯»ñÈ¡
-								ÊÖ¶¯Ñ¡ÔñÊ±Çø
-								ÊÖ¶¯ÉèÖÃÊ±¼ä¡¢ÈÕÆÚ
-		ÊÇ·ñÏÔÊ¾Ê±¼ä			ÊÇ·ñÔÚÊ×Ò³ÏÔÊ¾Ê±¼ä
-		Ê±¼ä¸ñÊ½				24:00»ò12:00 AM
-		ÈÕÆÚ¸ñÊ½				Ó¢ÎÄ£º9 August 2025»ò9 August»ò9 Aug
-								ÖÐÎÄ£º2025Äê8ÔÂ9ÈÕ»ò2025.8.9»ò8ÔÂ9ÈÕ
-		Ê±¼ä¡¢ÈÕÆÚÎ»ÖÃÑ¡Ôñ		¿¿×ó/¿¿ÓÒ
+	ï¿½ï¿½ï¿½ï¿½:
+		Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½			ï¿½Ô¶ï¿½ï¿½ï¿½È¡
+								ï¿½Ö¶ï¿½Ñ¡ï¿½ï¿½Ê±ï¿½ï¿½
+								ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä¡¢ï¿½ï¿½ï¿½ï¿½
+		ï¿½Ç·ï¿½ï¿½ï¿½Ê¾Ê±ï¿½ï¿½			ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ê¾Ê±ï¿½ï¿½
+		Ê±ï¿½ï¿½ï¿½Ê½				24:00ï¿½ï¿½12:00 AM
+		ï¿½ï¿½ï¿½Ú¸ï¿½Ê½				Ó¢ï¿½Ä£ï¿½9 August 2025ï¿½ï¿½9 Augustï¿½ï¿½9 Aug
+								ï¿½ï¿½ï¿½Ä£ï¿½2025ï¿½ï¿½8ï¿½ï¿½9ï¿½Õ»ï¿½2025.8.9ï¿½ï¿½8ï¿½ï¿½9ï¿½ï¿½
+		Ê±ï¿½ä¡¢ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Ñ¡ï¿½ï¿½		ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½
 */
 
 typedef struct SettingsClockPage
 {
 	lv_obj_t* Handle;
-	/*
-		Ê±¼äÈÕÆÚÉèÖÃ			×Ô¶¯»ñÈ¡
-	*/
+
 	lv_obj_t* LabelAutoGetTime;
 	lv_obj_t* SwitchAutoGetTime;
-	/*
-		ÊÖ¶¯Ñ¡ÔñÊ±Çø
-	*/
-	lv_obj_t* LabelTimeZone;
-	lv_obj_t* DropdownTimeZone;
-	/*
-		ÊÖ¶¯ÉèÖÃÊ±¼ä¡¢ÈÕÆÚ
-	*/
-	lv_obj_t* LabelDateTime;
-	lv_obj_t* DropdownYear;
-	lv_obj_t* DropdownMonth;
-	lv_obj_t* DropdownDay;
-	lv_obj_t* DropdownHour;
-	lv_obj_t* DropdownMinute;
-	lv_obj_t* DropdownSecond;
-	/*
-		ÊÇ·ñÔÚÊ×Ò³ÏÔÊ¾Ê±¼ä
-	*/
-	lv_obj_t* LabelHomePageShowTime;
-	lv_obj_t* SwitchHomePageShowTime;
-	/*
-		Ê±¼ä¸ñÊ½			24:00»ò12:00 AM
-	*/
-	lv_obj_t* LabelTimeFormat;
-	lv_obj_t* DropdownTimeFormat;
-	/*
-		ÈÕÆÚ¸ñÊ½			Ó¢ÎÄ£º9 August 2025»ò9 August»ò9 Aug
-							ÖÐÎÄ£º2025Äê8ÔÂ9ÈÕ»ò2025.8.9»ò8ÔÂ9ÈÕ
-	*/
-	lv_obj_t* LabelDateFormat;
-	lv_obj_t* DropdownDateFormat;
-	/*
-		Ê±¼ä¡¢ÈÕÆÚÎ»ÖÃÑ¡Ôñ		¿¿×ó/¿¿ÓÒ
-	*/
-	lv_obj_t* LabelTimePos;
-	lv_obj_t* DropdownTimePos;
+
+	//lv_obj_t* LabelTimeZone;
+	//lv_obj_t* DropdownTimeZone;
+
+	//lv_obj_t* LabelDateTime;
+	//lv_obj_t* DropdownYear;
+	//lv_obj_t* DropdownMonth;
+	//lv_obj_t* DropdownDay;
+	//lv_obj_t* DropdownHour;
+	//lv_obj_t* DropdownMinute;
+	//lv_obj_t* DropdownSecond;
+
+	lv_obj_t* LabelHideTime;
+	lv_obj_t* SwitchHideTime;
+
+	lv_obj_t* LabeHideDate;
+	lv_obj_t* SwitchHideDate;
+
+	//lv_obj_t* LabelTimeFormat;
+	//lv_obj_t* DropdownTimeFormat;
+
+	//lv_obj_t* LabelDateFormat;
+	//lv_obj_t* DropdownDateFormat;
+
+	//lv_obj_t* LabelTimePos;
+	//lv_obj_t* DropdownTimePos;
 }SettingsClockPage;

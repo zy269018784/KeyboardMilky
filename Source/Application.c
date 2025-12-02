@@ -103,17 +103,13 @@ void CreateApplication()
     App->CurrentTheme.timer_stop_button_size.x = 50;
     App->CurrentTheme.timer_stop_button_size.y = 50;
 
-    printf("CreateApplication 2\n");
     //lv_indev_set_long_press_time(ActiveScreen, 500);
     /*
         默认设置
     */
     ResetSystemSettings(&App->Setings);
-    printf("CreateApplication 3\n");
     CreateHomePage(&App->PageHome, ActiveScreen);
-    printf("CreateApplication 4\n");
     CreateSystemInfoPage(&App->PageSystemInfo, ActiveScreen);
-    printf("CreateApplication 5\n");
     switch (App->CurrentTheme.Index)
     {
     case 1:
@@ -197,9 +193,9 @@ void Run(Application* App)
 {
     InitEventHandle();
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
-    ShowPage(App, ClockPageNum, SETTING_HOME_PAGE_NUM);
+   // ShowPage(App, ClockPageNum, SETTING_HOME_PAGE_NUM);
     //ShowPage(App, MusicPageNum, WALLPAPER_PAGE_NUM);
-    //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
+    ShowPage(App, SettingPageNum, CLOCK_PAGE_NUM);
 
 
     while (1)

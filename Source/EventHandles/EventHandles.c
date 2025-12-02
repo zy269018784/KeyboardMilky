@@ -1,5 +1,7 @@
-#include "../Application.h"
+ï»¿#include "../Application.h"
 #include <lvgl/lvgl.h>
+#include <stdio.h>
+
 void ShowPage(Application* App, int PageIndex, int SubPageIndex);
 
 void  CallbackShowHomePage(lv_event_t* e)
@@ -77,7 +79,7 @@ void  CallbackClockStop(lv_event_t* e)
 }
 
 
-void  CallbackClockTimeUp(lv_event_t* e)
+void  CallbackClockTimeUp(lv_timer_t* e)
 {
 	printf("CallbackClockTimeUp\n");
 	lv_timer_pause(App->Clock);
@@ -215,7 +217,7 @@ void  CallbackTimeFormat(lv_event_t* e)
 	lv_event_code_t code = lv_event_get_code(e);
 	lv_obj_t* obj = lv_event_get_target_obj(e);
 	if (code == LV_EVENT_VALUE_CHANGED) {
-		auto Index = lv_dropdown_get_selected(obj);
+		int Index = lv_dropdown_get_selected(obj);
 		App->Setings.TimeFormat24 = false;
 		if (1 == Index)
 			App->Setings.TimeFormat24 = true;
@@ -238,7 +240,7 @@ void  CallbackTimePos(lv_event_t* e)
 	lv_event_code_t code = lv_event_get_code(e);
 	lv_obj_t* obj = lv_event_get_target_obj(e);
 	if (code == LV_EVENT_VALUE_CHANGED) {
-		auto Index = lv_dropdown_get_selected(obj);
+		int Index = lv_dropdown_get_selected(obj);
 		App->Setings.TimePosLeft = false;
 		if (0 == Index)
 			App->Setings.TimePosLeft = true;
@@ -275,7 +277,7 @@ void  CallbackAutoScreenOffTime(lv_event_t* e)
 }
 
 /*
-	ÆÁÄ»»¬¶¯ÊÂ¼þ
+	ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
 */
 void  CallbackGesture(lv_event_t* e)
 {
@@ -316,7 +318,7 @@ void  CallbackGesture(lv_event_t* e)
 	}
 }
 
-void  CallbackVoulueTimeOut(lv_event_t* e)
+void  CallbackVoulueTimeOut(lv_timer_t* e)
 {
 	lv_obj_add_flag(App->PageHome.Volume.Handle, LV_OBJ_FLAG_HIDDEN);
 	lv_timer_pause(App->VolumeTimer);
@@ -343,19 +345,19 @@ void InitEventHandle()
 	}
 
 	/*
-		»¬¶¯ÊÂ¼þ
+		ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
 	*/
 	//lv_obj_add_event_cb(lv_screen_active(), CallbackGesture, LV_EVENT_GESTURE, NULL);
 	
 	/*
-		³¤°´ÊÂ¼þ
+		ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
 	*/
 	//lv_indev_set_long_press_time(lv_indev_get_next(NULL), 500);
 	//lv_indev_set_long_press_repeat_time(lv_indev_get_next(NULL), 150);
 	lv_obj_add_event_cb(lv_screen_active(), CallbackLongPressed, LV_EVENT_ALL, NULL);
 
 	/*
-		DockÀ¸
+		Dockï¿½ï¿½
 	*/
 	lv_obj_add_event_cb(App->ButtonHomePage,							CallbackShowHomePage,				LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->ButtonMusic,								CallbackShowMusicPage,				LV_EVENT_CLICKED, NULL);
@@ -364,7 +366,7 @@ void InitEventHandle()
 	lv_obj_add_event_cb(App->ButtonSetting,								CallbackShowSettingPage,			LV_EVENT_CLICKED, NULL);
 
 	/*
-		ÉèÖÃÖ÷Ò³
+		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³
 	*/
 	lv_obj_add_event_cb(App->PageSettings.PageHome.ButtonTheme,			CallbackShowThemeSettingPage,		LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->PageSettings.PageHome.ButtonWallpapper,	CallbackShowWallpapperSettingPage,	LV_EVENT_CLICKED, NULL);
@@ -374,7 +376,7 @@ void InitEventHandle()
 	lv_obj_add_event_cb(App->PageSettings.PageHome.ButtonUpdate,		CallbackShowUpgradeSettingPage,		LV_EVENT_CLICKED, NULL);	
 
 	/*
-		Ê±ÖÓ
+		Ê±ï¿½ï¿½
 	*/
 	App->Clock = lv_timer_create(&CallbackClockTimeUp, 5000, NULL);
 	lv_timer_pause(App->Clock);
@@ -383,25 +385,26 @@ void InitEventHandle()
 	lv_timer_pause(App->VolumeTimer);
 
 	/*
-		Ö÷ÌâÒ³
+		ï¿½ï¿½ï¿½ï¿½Ò³
 	*/
 	lv_obj_add_event_cb(App->PageSettings.PageTheme.ButtonReturn,		CallbackShowSettingPage, LV_EVENT_CLICKED, NULL);
 	/*
-		±ÚÖ½Ò³
+		ï¿½ï¿½Ö½Ò³
 	*/
 	lv_obj_add_event_cb(App->PageSettings.PageWallpapper.ButtonReturn,	CallbackShowSettingPage, LV_EVENT_CLICKED, NULL);
 	/*
-		Ê±ÖÓÒ³
+		Ê±ï¿½ï¿½Ò³
 	*/
 	lv_obj_add_event_cb(App->PageClock.start_button, CallbackClockStart, LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->PageClock.stop_button, CallbackClockStop, LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->PageClock.back_button, CallbackClockReturn, LV_EVENT_CLICKED, NULL);
 
 	/*
-		ClockÉèÖÃ
+		Clockï¿½ï¿½ï¿½ï¿½
 	*/
 	lv_obj_add_event_cb(App->PageSettings.PageClock.SwitchAutoGetTime, CallbackAutoGetTime, LV_EVENT_CLICKED, NULL);
-	lv_obj_add_event_cb(App->PageSettings.PageClock.SwitchHomePageShowTime, CallbackHomePageShowTime, LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->PageSettings.PageClock.SwitchHideTime, CallbackHomePageShowTime, LV_EVENT_CLICKED, NULL);
+#if 0
 	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownYear,	CallbackYear, LV_EVENT_ALL, NULL);
 	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownMonth,	CallbackMonth, LV_EVENT_ALL, NULL);
 	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownDay,	CallbackDay, LV_EVENT_ALL, NULL);
@@ -414,15 +417,16 @@ void InitEventHandle()
 	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownTimeFormat, CallbackTimeFormat, LV_EVENT_ALL, NULL);
 	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownDateFormat, CallbackDateFormat, LV_EVENT_ALL, NULL);
 	lv_obj_add_event_cb(App->PageSettings.PageClock.DropdownTimePos, CallbackTimePos, LV_EVENT_ALL, NULL);
+#endif
 
 	/*
-		DockÉèÖÃ
+		Dockï¿½ï¿½ï¿½ï¿½
 	*/
 	lv_obj_add_event_cb(App->PageSettings.PageDock.SwitchAutoHideDock, CallbackAutoHideDock, LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->PageSettings.PageDock.SwitchShowDock, CallbackShowDock, LV_EVENT_CLICKED, NULL);
 
 	/*
-		ÆäËûÉèÖÃ
+		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	*/
 	lv_obj_add_event_cb(App->PageSettings.PageOther.SwitchAutoScreenOff,	CallbackAutoScreenOff, LV_EVENT_CLICKED, NULL);
 	lv_obj_add_event_cb(App->PageSettings.PageOther.SwitchPogoPin,			CallbackPogoPin, LV_EVENT_CLICKED, NULL);

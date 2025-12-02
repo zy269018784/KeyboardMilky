@@ -56,8 +56,15 @@ typedef struct SettingsPage
 	SettingsOtherPage PageOther;
 	SettingsUpdatePage PageUpdate;
 
-	//ThemePage ThemeSettingPage;
-	//WallpapperPage WallpapperSettingPage;
+	lv_obj_t* ReturnRow;
+	lv_obj_t* ButtonReturn;
+	lv_obj_t* LabelCurrentPage;
+	lv_obj_t* ButtonUSBDownload;
+
+	Point2 ButtonReturnSzie;
+	Point2 LabelCurrentPageSize;
+	Point2 ReturnRowPos;
+	Point2 ReturnRowSize;
 }SettingsPage;
 
 

@@ -20,11 +20,12 @@ typedef struct ThemePage
 typedef struct SettingsThemePage
 {
 	lv_obj_t* Handle;
-
+#if 0
 	lv_obj_t* ReturnRow;
 	lv_obj_t* ButtonReturn;
 	lv_obj_t* LabelCurrentPage;
 	//lv_obj_t* ButtonUSBDownload;
+#endif
 
 	lv_obj_t* ContentRow;
 	ThemePage Themes[10];

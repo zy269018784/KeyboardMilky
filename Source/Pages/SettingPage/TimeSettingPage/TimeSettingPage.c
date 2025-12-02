@@ -21,7 +21,7 @@ void CreateSettingsClockPage(SettingsPage* Page)
 
 
     y = 200;
-    Page->PageClock.LabeHideDate = CreateLabel(Page->PageClock.Handle, 6, y, 200, 20, "Hide Time", lv_color_hex3(0xFF0));
+    Page->PageClock.LabeHideDate = CreateLabel(Page->PageClock.Handle, 6, y, 200, 20, "Hide Date", lv_color_hex3(0xFF0));
     Page->PageClock.SwitchHideDate = CreateSwitch(Page->PageClock.Handle, 200, y, 200, 20, lv_color_hex3(0xFF0));
 
 

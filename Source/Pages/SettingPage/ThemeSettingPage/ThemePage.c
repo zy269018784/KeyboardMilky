@@ -59,7 +59,7 @@ void CreateSettingsThemePage(SettingsPage* Page)
     Point2 ContentRowPos = { 0,    ReturnRowPos.y + ReturnRowSize.y + padding };
     Point2 ContentRowSize = { 480,  480 - 3 * padding - ReturnRowSize.y };
     Page->PageTheme.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
-
+#if 0
     /*
         H1
     */
@@ -79,7 +79,7 @@ void CreateSettingsThemePage(SettingsPage* Page)
         LabelCurrentPageSize.y,
         "Theme", lv_color_hex3(0x0F0));
     //Page->PageTheme.ButtonUSBDownload = CreateButton(Page->PageTheme.ReturnRow, 440 - 6, 6, 40, 40, lv_color_hex3(0xFF0));
-
+#endif
     /*
         H2
     */

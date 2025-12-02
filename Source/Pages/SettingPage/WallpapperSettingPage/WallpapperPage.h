@@ -18,12 +18,12 @@ typedef struct SettingsWallpapperPage
 {
 	lv_obj_t* Handle;
 	lv_obj_t* Label;
-
+#if 0
 	lv_obj_t* ReturnRow;
 	lv_obj_t* ButtonReturn;
 	lv_obj_t* LabelCurrentPage;
 	lv_obj_t* ButtonUSBDownload;
-
+#endif
 	lv_obj_t* ContentRow;
 	WallpapperPage Wallpappers[10];
 

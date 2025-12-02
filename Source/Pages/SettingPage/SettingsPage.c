@@ -22,6 +22,34 @@ void CreateSettingsPage(SettingsPage* Page, lv_obj_t* Parent)
     CreateSettingsClockPage(Page);
     CreateSettingsOtherPage(Page);
     CreateSettingsUpdatePage(Page);
+
+    int padding = 6;
+    int H1 = 60 + 2 * 6;
+    Page->ButtonReturnSzie.x = 60;
+    Page->ButtonReturnSzie.y = 60;
+    Page->LabelCurrentPageSize.x = 180;
+    Page->LabelCurrentPageSize.y = 60;
+    Page->ReturnRowPos.x = 0;
+    Page->ReturnRowPos.y = padding;
+    Page->ReturnRowSize.x = 480;
+    Page->ReturnRowSize.y = 60;
+
+    Page->ReturnRow  = CreateBase(Parent, 0, 0, LV_PCT(100), 50, lv_color_hex3(0xF00));
+    Page->ButtonReturn = CreateButton(Page->ReturnRow,
+    padding,
+    0,
+    Page->ButtonReturnSzie.x,
+    Page->ButtonReturnSzie.y,
+    lv_color_hex3(0xFF0));
+
+    Page->LabelCurrentPage = CreateLabel(Page->ReturnRow,
+        2 * padding + Page->ButtonReturnSzie.x,
+        0,
+        Page->LabelCurrentPageSize.x,
+        Page->LabelCurrentPageSize.y,
+        "Wallpapper", lv_color_hex3(0x0F0));
+
+    Page->ButtonUSBDownload = CreateButton(Page->ReturnRow, 440, 0, 40, 40, lv_color_hex3(0xFF0));
 }
 
 void CreateSettingsHomePage(SettingsPage* Page)
@@ -72,25 +100,18 @@ Point2 GetThemePos(int LinearIndex, int w, int h, int padding)
 //    int col = LinearIndex % 2;
 //    return (Point2){ padding + col * (w + padding), row * (h + padding) };
 //}
-
-
-
-
-
-
-
 void ShowSettingPage(SettingsPage* Page, int PageNo)
 {
     lv_obj_clear_flag(Page->Handle, LV_OBJ_FLAG_HIDDEN);
 
     lv_obj_add_flag(Page->PageHome.Handle, LV_OBJ_FLAG_HIDDEN);
 
+    lv_obj_add_flag(Page->ReturnRow, LV_OBJ_FLAG_HIDDEN);
+
     lv_obj_add_flag(Page->PageWallpapper.Handle, LV_OBJ_FLAG_HIDDEN);
-    lv_obj_add_flag(Page->PageWallpapper.ReturnRow, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(Page->PageWallpapper.ContentRow, LV_OBJ_FLAG_HIDDEN);
 
     lv_obj_add_flag(Page->PageTheme.Handle, LV_OBJ_FLAG_HIDDEN);
-    lv_obj_add_flag(Page->PageTheme.ReturnRow, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(Page->PageTheme.ContentRow, LV_OBJ_FLAG_HIDDEN);
 
     lv_obj_add_flag(Page->PageDock.Handle, LV_OBJ_FLAG_HIDDEN);
@@ -98,31 +119,46 @@ void ShowSettingPage(SettingsPage* Page, int PageNo)
     lv_obj_add_flag(Page->PageOther.Handle, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(Page->PageUpdate.Handle, LV_OBJ_FLAG_HIDDEN);
 
+    /*
+     *  主页隐藏返回行
+     */
+    lv_obj_clear_flag(Page->ReturnRow, LV_OBJ_FLAG_HIDDEN);
     switch (PageNo)
     {
-    case SETTING_HOME_PAGE_NUM:
+        case SETTING_HOME_PAGE_NUM:
+        lv_obj_add_flag(Page->ReturnRow, LV_OBJ_FLAG_HIDDEN);
         lv_obj_clear_flag(Page->PageHome.Handle, LV_OBJ_FLAG_HIDDEN);
         break;
     case THEME_PAGE_NUM:
-        lv_obj_clear_flag(Page->PageTheme.ReturnRow, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_set_parent(Page->ReturnRow, Page->PageTheme.Handle);
+        lv_label_set_text_static(Page->LabelCurrentPage, "Theme");
         lv_obj_clear_flag(Page->PageTheme.ContentRow, LV_OBJ_FLAG_HIDDEN);
         lv_obj_clear_flag(Page->PageTheme.Handle, LV_OBJ_FLAG_HIDDEN);
         break;
     case WALLPAPER_PAGE_NUM:
-        lv_obj_clear_flag(Page->PageWallpapper.ReturnRow, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_set_parent(Page->ReturnRow, Page->PageWallpapper.Handle);
+        lv_label_set_text_static(Page->LabelCurrentPage, "Wallpapper");
         lv_obj_clear_flag(Page->PageWallpapper.ContentRow, LV_OBJ_FLAG_HIDDEN);
         lv_obj_clear_flag(Page->PageWallpapper.Handle, LV_OBJ_FLAG_HIDDEN);
         break;
     case DOCK_PAGE_NUM:
+        lv_obj_set_parent(Page->ReturnRow, Page->PageDock.Handle);
+        lv_label_set_text_static(Page->LabelCurrentPage, "Dock");
         lv_obj_clear_flag(Page->PageDock.Handle, LV_OBJ_FLAG_HIDDEN);
         break;
     case CLOCK_PAGE_NUM:
+        lv_obj_set_parent(Page->ReturnRow, Page->PageClock.Handle);
+        lv_label_set_text_static(Page->LabelCurrentPage, "Clock");
         lv_obj_clear_flag(Page->PageClock.Handle, LV_OBJ_FLAG_HIDDEN);
         break;
     case OTHER_PAGE_NUM:
+        lv_obj_set_parent(Page->ReturnRow, Page->PageOther.Handle);
+        lv_label_set_text_static(Page->LabelCurrentPage, "Other");
         lv_obj_clear_flag(Page->PageOther.Handle, LV_OBJ_FLAG_HIDDEN);
         break;
     case UPDATE_PAGE_NUM:
+        lv_obj_set_parent(Page->ReturnRow, Page->PageUpdate.Handle);
+        lv_label_set_text_static(Page->LabelCurrentPage, "Upgrade");
         lv_obj_clear_flag(Page->PageUpdate.Handle, LV_OBJ_FLAG_HIDDEN);
         break;
     }

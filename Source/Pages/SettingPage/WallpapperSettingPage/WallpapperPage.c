@@ -35,7 +35,7 @@ void CreateSettingsWallpapperPage(SettingsPage* Page)
 
     Page->PageWallpapper.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
     //  Page->PageWallpapper.Label = CreateLabel(Page->PageWallpapper.Handle, 0, 0, LV_PCT(100), 50, "PageWallpapper", lv_color_hex3(0xF00));
-
+#if 0
     Page->PageWallpapper.ReturnRow = CreateBase(Page->Handle, ReturnRowPos.x, ReturnRowPos.y, ReturnRowSize.x, ReturnRowSize.y, lv_color_hex3(0x0F0));
 
     Page->PageWallpapper.ButtonReturn = CreateButton(Page->PageWallpapper.ReturnRow,
@@ -53,7 +53,7 @@ void CreateSettingsWallpapperPage(SettingsPage* Page)
         "Wallpapper", lv_color_hex3(0x0F0));
 
     Page->PageWallpapper.ButtonUSBDownload = CreateButton(Page->PageWallpapper.ReturnRow, 440, 0, 40, 40, lv_color_hex3(0xFF0));
-
+#endif
     int w = (480 - 3 * padding) / 2, h = w;
     InitHead(&Page->PageWallpapper.WallpapperPageLists);
     for (int i = 0; i < 4; i++)

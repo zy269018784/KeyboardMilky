@@ -387,11 +387,11 @@ void InitEventHandle()
 	/*
 		����ҳ
 	*/
-	lv_obj_add_event_cb(App->PageSettings.PageTheme.ButtonReturn,		CallbackShowSettingPage, LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->PageSettings.ButtonReturn,		CallbackShowSettingPage, LV_EVENT_CLICKED, NULL);
 	/*
 		��ֽҳ
 	*/
-	lv_obj_add_event_cb(App->PageSettings.PageWallpapper.ButtonReturn,	CallbackShowSettingPage, LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->PageSettings.ButtonReturn,	CallbackShowSettingPage, LV_EVENT_CLICKED, NULL);
 	/*
 		ʱ��ҳ
 	*/

@@ -31,6 +31,7 @@ typedef struct SettingsOtherPage
 	*/
 	lv_obj_t* LabelPogoPin;
 	lv_obj_t* SwitchPogoPin;
+
 	/*
 		恢复出厂设置
 	*/

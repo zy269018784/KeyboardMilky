@@ -103,6 +103,24 @@ void CreateApplication()
     App->CurrentTheme.timer_stop_button_size.x = 50;
     App->CurrentTheme.timer_stop_button_size.y = 50;
 
+    App->color1 = lv_color_make(21, 21, 21);
+    App->color2 = lv_color_make(255, 255, 255);
+    App->color3 = lv_color_make(146, 146, 146);
+    App->color4 = lv_color_make(214, 109, 109);
+
+    lv_style_init(&App->style2);
+    lv_style_set_text_color(&App->style2, App->color2);
+
+    lv_style_init(&App->style4);
+    lv_style_set_text_color(&App->style4, App->color4);
+
+    lv_style_init(&App->WhiteStyle);
+    lv_style_set_text_color(&App->WhiteStyle, App->color2);
+
+    lv_style_init(&App->BGStyle);
+    lv_style_set_bg_color(&App->BGStyle, App->color1);
+
+
     //lv_indev_set_long_press_time(ActiveScreen, 500);
     /*
         默认设置
@@ -195,7 +213,7 @@ void Run(Application* App)
     //ShowPage(App, SettingPageNum, THEME_PAGE_NUM);
    // ShowPage(App, ClockPageNum, SETTING_HOME_PAGE_NUM);
     //ShowPage(App, MusicPageNum, WALLPAPER_PAGE_NUM);
-    ShowPage(App, SettingPageNum, CLOCK_PAGE_NUM);
+    ShowPage(App, SettingPageNum, OTHER_PAGE_NUM);
 
 
     while (1)

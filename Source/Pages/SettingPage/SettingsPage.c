@@ -3,6 +3,9 @@
 #include "Pages/SettingPage/ThemeSettingPage/ThemePage.h"
 
 #include <stdio.h>
+
+#include "Application.h"
+
 void CreateSettingsHomePage(SettingsPage* Page);
 void CreateSettingsWallpapperPage(SettingsPage* Page);
 void CreateSettingsThemePage(SettingsPage* Page);
@@ -13,15 +16,6 @@ void CreateSettingsUpdatePage(SettingsPage* Page);
 
 void CreateSettingsPage(SettingsPage* Page, lv_obj_t* Parent)
 {
-    Page->Parent = Parent;
-    Page->Handle  = CreateBase(Parent, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0xF00));
-    CreateSettingsHomePage(Page);
-    CreateSettingsWallpapperPage(Page);
-    CreateSettingsThemePage(Page);
-    CreateSettingsDockPage(Page);
-    CreateSettingsClockPage(Page);
-    CreateSettingsOtherPage(Page);
-    CreateSettingsUpdatePage(Page);
 
     int padding = 6;
     int H1 = 60 + 2 * 6;
@@ -34,13 +28,25 @@ void CreateSettingsPage(SettingsPage* Page, lv_obj_t* Parent)
     Page->ReturnRowSize.x = 480;
     Page->ReturnRowSize.y = 60;
 
-    Page->ReturnRow  = CreateBase(Parent, 0, 0, LV_PCT(100), 50, lv_color_hex3(0xF00));
+    Page->Parent = Parent;
+    Page->Handle  = CreateBase(Parent, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0xF00));
+
+
+    CreateSettingsHomePage(Page);
+    CreateSettingsWallpapperPage(Page);
+    CreateSettingsThemePage(Page);
+    CreateSettingsDockPage(Page);
+    CreateSettingsClockPage(Page);
+    CreateSettingsOtherPage(Page);
+    CreateSettingsUpdatePage(Page);
+
+    Page->ReturnRow  = CreateBase(Parent, 0, 0, LV_PCT(100), 50, App->color1);
     Page->ButtonReturn = CreateButton(Page->ReturnRow,
     padding,
     0,
     Page->ButtonReturnSzie.x,
     Page->ButtonReturnSzie.y,
-    lv_color_hex3(0xFF0));
+    App->color2);
 
     Page->LabelCurrentPage = CreateLabel(Page->ReturnRow,
         2 * padding + Page->ButtonReturnSzie.x,
@@ -48,8 +54,10 @@ void CreateSettingsPage(SettingsPage* Page, lv_obj_t* Parent)
         Page->LabelCurrentPageSize.x,
         Page->LabelCurrentPageSize.y,
         "Wallpapper", lv_color_hex3(0x0F0));
+    lv_obj_t *obj = Page->LabelCurrentPage;
+    lv_obj_add_style(obj, &App->WhiteStyle, 0);
 
-    Page->ButtonUSBDownload = CreateButton(Page->ReturnRow, 440, 0, 40, 40, lv_color_hex3(0xFF0));
+    Page->ButtonUSBDownload = CreateButton(Page->ReturnRow, 440, 0, 40, 40, App->color2);
 }
 
 void CreateSettingsHomePage(SettingsPage* Page)

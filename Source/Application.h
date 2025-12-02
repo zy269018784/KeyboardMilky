@@ -70,6 +70,20 @@ typedef struct
 	*/
 	lv_timer_t* Clock;
 	lv_timer_t* VolumeTimer;
+	/*
+	 *
+	 */
+	lv_color_t color1;
+	lv_color_t color2;
+	lv_color_t color3;
+	lv_color_t color4;
+
+	lv_style_t style1;
+	lv_style_t style2;
+	lv_style_t style4;
+
+	lv_style_t WhiteStyle;
+	lv_style_t BGStyle;
 }Application;
 
 

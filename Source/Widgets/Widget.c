@@ -1,24 +1,32 @@
 ﻿#include "Widget.h"
-
+#include <stdio.h>
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 lv_obj_t* CreateBase(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int32_t h, lv_color_t bgvalue)
 {
     lv_obj_t* Handle = NULL;
-
+    printf("CreateBase %p\n", Parent);
+    printf("CreateBase 1\n");
     Handle = lv_obj_create(Parent);
     /*
         设置位置和尺寸
     */
+    printf("CreateBase 2\n");
     lv_obj_set_pos(Handle, x, y);
     lv_obj_set_size(Handle, w, h); // 全屏
     /*
         设置盒子模型
     */
+    printf("CreateBase 3\n");
     lv_obj_set_style_pad_all(Handle, 0, 0);
     lv_obj_set_style_border_width(Handle, 0, 0);
     lv_obj_set_style_margin_all(Handle, 0, 0);
     /*
-          设置背景颜色
-      */
+      设置背景颜色
+    */
+    printf("CreateBase 4\n");
     lv_obj_set_style_bg_color(Handle, bgvalue, 0);
     /*
         设置radius
@@ -256,3 +264,6 @@ lv_obj_t* CreateThemeWidget(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, i
 
     return Handle;
 }
+#ifdef __cplusplus
+}
+#endif

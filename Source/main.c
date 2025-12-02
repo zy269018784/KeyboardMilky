@@ -1,10 +1,10 @@
 #include "Application.h"
 #include "API/API.h"
+#include <stdio.h>
 int main(int argc, char** argv)
 {
 	CreateApplication();
 	InitBuffer();
-
 	//SetTemp(123);
 	//SetMemoryUsage(70);
 	//SetCPUFreq(5522);

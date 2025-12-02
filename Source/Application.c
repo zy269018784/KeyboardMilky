@@ -2,6 +2,7 @@
 #include "Widgets/Widget.h"
 #include "EventHandles/EventHandles.h"
 #include "API/API.h"
+#include <stdio.h>
 Application* App;
 
 void ShowSettingPage(SettingsPage* Page, int PageNo);
@@ -75,7 +76,7 @@ void CreateApplication()
 	#endif
 
 
-
+    printf("CreateApplication 1\n");
     //lv_obj_t* header = lv_win_get_header(App->Display);
     //lv_obj_add_flag(header, LV_OBJ_FLAG_HIDDEN);
 
@@ -102,15 +103,17 @@ void CreateApplication()
     App->CurrentTheme.timer_stop_button_size.x = 50;
     App->CurrentTheme.timer_stop_button_size.y = 50;
 
-
+    printf("CreateApplication 2\n");
     lv_indev_set_long_press_time(ActiveScreen, 500);
     /*
         默认设置
     */
     ResetSystemSettings(&App->Setings);
-
+    printf("CreateApplication 3\n");
     CreateHomePage(&App->PageHome, ActiveScreen);
+    printf("CreateApplication 4\n");
     CreateSystemInfoPage(&App->PageSystemInfo, ActiveScreen);
+    printf("CreateApplication 5\n");
     switch (App->CurrentTheme.Index)
     {
     case 1:
@@ -123,6 +126,7 @@ void CreateApplication()
         CreateTheme3ClockPage(&App->PageClock, ActiveScreen, &App->CurrentTheme);
         break;
     }
+    printf("CreateApplication 6\n");
     //CreateMusicPage(&App->PageMusic, ActiveScreen);
     CreateMusicPageTheme2(&App->PageMusic, ActiveScreen); // TODO: 切换主题时，重新创建页面？？？
     CreateSettingsPage(&App->PageSettings, ActiveScreen);

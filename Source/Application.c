@@ -104,7 +104,7 @@ void CreateApplication()
     App->CurrentTheme.timer_stop_button_size.y = 50;
 
     printf("CreateApplication 2\n");
-    lv_indev_set_long_press_time(ActiveScreen, 500);
+    //lv_indev_set_long_press_time(ActiveScreen, 500);
     /*
         默认设置
     */

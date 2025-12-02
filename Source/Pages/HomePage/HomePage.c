@@ -8,6 +8,7 @@ void CreateHomePage(HomePage* Page, lv_obj_t* Parent)
     Page->Parent = Parent;
     /*---------------------------------------------------------------------*/
     printf("CreateHomePage 1\n");
+    //Page->Handle = CreateBase(Parent, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
     Page->Handle = CreateBase(Parent, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
     printf("CreateHomePage 2\n");
     Page->CapsLock   = CreateButton(Parent, 350, 420, 50, 50, lv_color_hex3(0xFF0));

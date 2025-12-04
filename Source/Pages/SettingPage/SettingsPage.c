@@ -67,28 +67,28 @@ void CreateSettingsHomePage(SettingsPage* Page)
 
     int32_t w = 480 - 30 * 2;
     int x = 30;
-    Page->PageHome.ButtonWallpapper = CreateButton(Page->PageHome.Handle, x, 0, w, 50, App->color1);
+    Page->PageHome.ButtonWallpapper = CreateButton2(Page->PageHome.Handle, x, 0, w, 50, App->color1, 8);
     lv_obj_add_style(Page->PageHome.ButtonWallpapper, &App->HoveredStyle, LV_STATE_HOVERED);
     Page->PageHome.LabelWallpapper = CreateLabel(Page->PageHome.ButtonWallpapper, 0, 0, w, 50, "Wallpapper", lv_color_hex3(0xF00));
     //lv_obj_set_style_text_align(Page->PageHome.LabelWallpapper, LV_TEXT_ALIGN_CENTER, 0);
 
-    Page->PageHome.ButtonTheme = CreateButton(Page->PageHome.Handle, x, 50, w, 50, App->color1);
+    Page->PageHome.ButtonTheme = CreateButton2(Page->PageHome.Handle, x, 50, w, 50, App->color1, 8);
     lv_obj_add_style(Page->PageHome.ButtonTheme, &App->HoveredStyle, LV_STATE_HOVERED);
     Page->PageHome.LabelTheme = CreateLabel(Page->PageHome.ButtonTheme, 0, 0, w, 50, "Theme", lv_color_hex3(0x00F));
 
-    Page->PageHome.ButtonDock = CreateButton(Page->PageHome.Handle, x, 100, w, 50, App->color1);
+    Page->PageHome.ButtonDock = CreateButton2(Page->PageHome.Handle, x, 100, w, 50, App->color1, 8);
     lv_obj_add_style(Page->PageHome.ButtonDock, &App->HoveredStyle, LV_STATE_HOVERED);
     Page->PageHome.LabelDock = CreateLabel(Page->PageHome.ButtonDock, 0, 0, w, 50, "Dock", lv_color_hex3(0x00F));
 
-    Page->PageHome.ButtonClock = CreateButton(Page->PageHome.Handle, x, 150, w, 50, App->color1);
+    Page->PageHome.ButtonClock = CreateButton2(Page->PageHome.Handle, x, 150, w, 50, App->color1, 8);
     lv_obj_add_style(Page->PageHome.ButtonClock, &App->HoveredStyle, LV_STATE_HOVERED);
     Page->PageHome.LabelClock = CreateLabel(Page->PageHome.ButtonClock, 0, 0, w, 50, "Clock", lv_color_hex3(0x00F));
 
-    Page->PageHome.ButtonOther = CreateButton(Page->PageHome.Handle, x, 200, w, 50, App->color1);
+    Page->PageHome.ButtonOther = CreateButton2(Page->PageHome.Handle, x, 200, w, 50, App->color1, 8);
     lv_obj_add_style(Page->PageHome.ButtonOther, &App->HoveredStyle, LV_STATE_HOVERED);
     Page->PageHome.LabelOther = CreateLabel(Page->PageHome.ButtonOther, 0, 0, w, 50, "Other", lv_color_hex3(0x00F));
 
-    Page->PageHome.ButtonUpdate = CreateButton(Page->PageHome.Handle, x, 250, w, 50, App->color1);
+    Page->PageHome.ButtonUpdate = CreateButton2(Page->PageHome.Handle, x, 250, w, 50, App->color1, 8);
     lv_obj_add_style(Page->PageHome.ButtonUpdate, &App->HoveredStyle, LV_STATE_HOVERED);
     Page->PageHome.LabelUpdate = CreateLabel(Page->PageHome.ButtonUpdate, 0, 0, w, 50, "Update", lv_color_hex3(0x00F));
 

@@ -107,6 +107,44 @@ lv_obj_t* CreateButton(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int32_
     return Handle;
 }
 
+lv_obj_t* CreateButton2(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int32_t h, lv_color_t bgvalue, int32_t radius)
+{
+    lv_obj_t* Handle = NULL;
+
+    Handle = lv_button_create(Parent);
+    /*
+        设置位置和尺寸
+    */
+    lv_obj_set_pos(Handle, x, y);
+    lv_obj_set_size(Handle, w, h);
+
+    /*
+        设置盒子模型
+    */
+    lv_obj_set_style_pad_all(Handle, 0, 0);
+    lv_obj_set_style_border_width(Handle, 0, 0);
+    lv_obj_set_style_margin_all(Handle, 0, 0);
+    /*
+      设置背景颜色
+    */
+    lv_obj_set_style_bg_color(Handle, bgvalue, 0);
+    /*
+        设置radius
+    */
+    lv_obj_set_style_radius(Handle, radius, 0);
+
+    lv_obj_set_style_shadow_width(Handle, 0, LV_STATE_DEFAULT);      // 默认状态
+    lv_obj_set_style_shadow_width(Handle, 0, LV_STATE_PRESSED);      // 按下状态
+    lv_obj_set_style_shadow_width(Handle, 0, LV_STATE_HOVERED);      // 悬停状态
+    lv_obj_set_style_shadow_width(Handle, 0, LV_STATE_DISABLED);     // 禁用状态
+    /*
+        关闭滚动条
+    */
+    lv_obj_clear_flag(Handle, LV_OBJ_FLAG_SCROLLABLE);
+
+    return Handle;
+}
+
 lv_obj_t* CreateImage(lv_obj_t* Parent, int32_t x, int32_t y, int32_t w, int32_t h, lv_color_t bgvalue)
 {
     lv_obj_t* Handle = NULL;

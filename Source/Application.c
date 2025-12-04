@@ -9,7 +9,7 @@ void ShowSettingPage(SettingsPage* Page, int PageNo);
 
 void CreateButtonLayout(Application* App, lv_obj_t *Parent)
 {
-    CreateDockBarTheme1(&App->DockBar, Parent);
+    //CreateDockBarTheme1(&App->DockBar, Parent);
 #if 0
     App->DockBar = lv_obj_create(Parent);
 
@@ -153,7 +153,7 @@ void CreateApplication()
     CreateMusicPageTheme2(&App->PageMusic, ActiveScreen); // TODO: 切换主题时，重新创建页面？？？
     CreateSettingsPage(&App->PageSettings, ActiveScreen);
     CreateKeyboardPage(&App->PageKeyboard, ActiveScreen);
-    CreateDockBarTheme1(&App->DockBar, ActiveScreen);
+    CreateDockBarTheme1(&App->DockBar, ActiveScreen, &App->CurrentTheme);
   //  CreateButtonLayout(App, ActiveScreen);
     
 

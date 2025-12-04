@@ -1,6 +1,6 @@
 #pragma once
 #include <lvgl/lvgl.h>
-
+#include "Theme/Theme.h"
 typedef struct {
     lv_obj_t * Handle;
 
@@ -11,4 +11,4 @@ typedef struct {
     lv_obj_t* ButtonSetting;
 }DockBar;
 
-void CreateDockBarTheme1(DockBar *Bar, lv_obj_t *Parent);
+void CreateDockBarTheme1(DockBar *Bar, lv_obj_t *Parent, Theme *CurrentTheme);

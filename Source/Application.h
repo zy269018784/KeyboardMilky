@@ -44,9 +44,10 @@ typedef struct
 	lv_display_t* Display;
 	//lv_obj_t* Window;
 
-	DockBar DockBar;
-#if 0
-	lv_obj_t* DockBar;
+	//DockBar DockBar;
+	DockBarTheme2 DockBar2;
+#if 1
+	lv_obj_t* DockBarHandle;
 	lv_obj_t* ButtonHomePage;
 	lv_obj_t* ButtonMusic;
 	lv_obj_t* ButtonClock;
@@ -66,6 +67,7 @@ typedef struct
 	SettingsPage PageSettings;
 	KeyboardPage PageKeyboard;
 
+	int ThemeIndex;
 	int CurrentPage;
 	/*
 		设置

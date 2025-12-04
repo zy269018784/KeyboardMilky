@@ -21,7 +21,6 @@ void CreateDockBarTheme1(DockBar *Bar, lv_obj_t *Parent, Theme *CurrentTheme)
     lv_obj_set_style_bg_color(Bar->ButtonHomePage, CurrentTheme->main_color, 0);
     lv_obj_clear_flag(Bar->ButtonHomePage, LV_OBJ_FLAG_SCROLLABLE);
 
-
     Bar->ButtonMusic = lv_button_create(DockBarHandle);
     lv_obj_set_pos(Bar->ButtonMusic, 4 * 2 + 30 * 1, 4);
     lv_obj_set_size(Bar->ButtonMusic, 30, 30);

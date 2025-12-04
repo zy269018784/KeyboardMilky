@@ -8,13 +8,15 @@ void CreateSettingsClockPage(SettingsPage* Page)
 {
     lv_obj_t *obj = NULL;
 
-    Page->PageClock.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
+    Page->PageClock.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), App->color1);
 
     int y;
     
 
     y = 50;
     Page->PageClock.LabelAutoGetTime = CreateLabel(Page->PageClock.Handle, 6, y, 200, 20, "Resync Time", lv_color_hex3(0xFF0));
+    lv_obj_add_style(Page->PageClock.LabelAutoGetTime, &App->WhiteStyle, 0);
+
     Page->PageClock.SwitchAutoGetTime = CreateSwitch(Page->PageClock.Handle, 200, y, 200, 20, lv_color_hex3(0xFF0));
     obj = Page->PageClock.SwitchAutoGetTime;
     lv_obj_set_style_radius(obj, 10, 0);
@@ -29,6 +31,8 @@ void CreateSettingsClockPage(SettingsPage* Page)
 
     y = 100;
     Page->PageClock.LabelHideTime = CreateLabel(Page->PageClock.Handle, 6, y, 200, 20, "Hide Time", lv_color_hex3(0xFF0));
+    lv_obj_add_style(Page->PageClock.LabelHideTime, &App->WhiteStyle, 0);
+
     Page->PageClock.SwitchHideTime = CreateSwitch(Page->PageClock.Handle, 200, y, 200, 20, lv_color_hex3(0xFF0));
     obj = Page->PageClock.SwitchHideTime;
     lv_obj_set_style_radius(obj, 10, 0);
@@ -43,6 +47,8 @@ void CreateSettingsClockPage(SettingsPage* Page)
 
     y = 200;
     Page->PageClock.LabeHideDate = CreateLabel(Page->PageClock.Handle, 6, y, 200, 20, "Hide Date", lv_color_hex3(0xFF0));
+    lv_obj_add_style(Page->PageClock.LabeHideDate, &App->WhiteStyle, 0);
+
     Page->PageClock.SwitchHideDate = CreateSwitch(Page->PageClock.Handle, 200, y, 200, 20, lv_color_hex3(0xFF0));
     obj = Page->PageClock.SwitchHideDate;
     lv_obj_set_style_radius(obj, 10, 0);

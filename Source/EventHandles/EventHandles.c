@@ -105,8 +105,8 @@ void  CallbackDockBarTimerStop(lv_event_t* e)
 
 void  CallbackDockBarTimerUp(lv_timer_t* e)
 {
-	//lv_obj_add_flag(App->RowLayout, LV_OBJ_FLAG_HIDDEN);
-	lv_obj_set_style_bg_opa(App->RowLayout, LV_OPA_0, 0);
+	//lv_obj_add_flag(App->DockBar, LV_OBJ_FLAG_HIDDEN);
+	lv_obj_set_style_bg_opa(App->DockBar.Handle, LV_OPA_0, 0);
 }
 
 void  CallbackClockReturn(lv_event_t* e)
@@ -120,9 +120,9 @@ void CallbackDockBarHovered(lv_event_t* e)
 	lv_obj_t* obj = lv_event_get_target_obj(e);
 	if (lv_obj_has_state(obj, LV_STATE_HOVERED))
 	{
-		//lv_obj_clear_flag(App->RowLayout, LV_OBJ_FLAG_HIDDEN);
-		lv_obj_set_style_bg_opa(App->RowLayout, LV_OPA_COVER, 0);
-		printf("App->RowLayout hovered\n");
+		//lv_obj_clear_flag(App->DockBar, LV_OBJ_FLAG_HIDDEN);
+		lv_obj_set_style_bg_opa(App->DockBar.Handle, LV_OPA_COVER, 0);
+		printf("App->DockBar hovered\n");
 	}
 }
 
@@ -142,19 +142,19 @@ void  CallbackShowDock(lv_event_t* e)
 {
 	lv_obj_t* obj = lv_event_get_target_obj(e);
 	App->Setings.ShowDock = false;
-	//lv_obj_add_flag(App->RowLayout, LV_OBJ_FLAG_HIDDEN);
+	//lv_obj_add_flag(App->DockBar, LV_OBJ_FLAG_HIDDEN);
 	/*
 	 * 透明代替隐藏
 	 */
-	lv_obj_set_style_bg_opa(App->RowLayout, LV_OPA_0,  0);
+	lv_obj_set_style_bg_opa(App->DockBar.Handle, LV_OPA_0,  0);
 	if (lv_obj_has_state(obj, LV_STATE_CHECKED))
 	{
 		App->Setings.ShowDock = true;
-		//lv_obj_clear_flag(App->RowLayout, LV_OBJ_FLAG_HIDDEN);
+		//lv_obj_clear_flag(App->DockBar, LV_OBJ_FLAG_HIDDEN);
 		/*
 		 *	不透明代表显示
 		 */
-		lv_obj_set_style_bg_opa(App->RowLayout, LV_OPA_COVER,0);
+		lv_obj_set_style_bg_opa(App->DockBar.Handle, LV_OPA_COVER,0);
 	}
 	printf("ShowDock: %d\n", App->Setings.ShowDock);
 }
@@ -393,7 +393,7 @@ void InitEventHandle()
 	/*
 	 * Docker Bar
 	 */
-	lv_obj_add_event_cb(App->RowLayout, CallbackDockBarHovered, LV_EVENT_HOVER_OVER, NULL);
+	lv_obj_add_event_cb(App->DockBar.Handle, CallbackDockBarHovered, LV_EVENT_HOVER_OVER, NULL);
 	/*
 		�����¼�
 	*/
@@ -409,11 +409,11 @@ void InitEventHandle()
 	/*
 		Dock��
 	*/
-	lv_obj_add_event_cb(App->ButtonHomePage,							CallbackShowHomePage,				LV_EVENT_CLICKED, NULL);
-	lv_obj_add_event_cb(App->ButtonMusic,								CallbackShowMusicPage,				LV_EVENT_CLICKED, NULL);
-	lv_obj_add_event_cb(App->ButtonClock,								CallbackShowClockPage,				LV_EVENT_CLICKED, NULL);
-	lv_obj_add_event_cb(App->ButtonSystemInfo,							CallbackShowSystemInfoPage,			LV_EVENT_CLICKED, NULL);
-	lv_obj_add_event_cb(App->ButtonSetting,								CallbackShowSettingPage,			LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->DockBar.ButtonHomePage,							CallbackShowHomePage,				LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->DockBar.ButtonMusic,								CallbackShowMusicPage,				LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->DockBar.ButtonClock,								CallbackShowClockPage,				LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->DockBar.ButtonSystemInfo,							CallbackShowSystemInfoPage,			LV_EVENT_CLICKED, NULL);
+	lv_obj_add_event_cb(App->DockBar.ButtonSetting,								CallbackShowSettingPage,			LV_EVENT_CLICKED, NULL);
 
 	/*
 		������ҳ

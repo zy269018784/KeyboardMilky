@@ -11,6 +11,8 @@
 #include "Pages/KeyboardPage/KeyboardPage.h"
 #include "SystemSettings/SystemSettings.h"
 #include "Theme/Theme.h"
+
+#include "DockBar/DockBar.h"
 #include "Point2.h"
 
 //typedef struct Theme
@@ -42,12 +44,16 @@ typedef struct
 	lv_display_t* Display;
 	//lv_obj_t* Window;
 
-	lv_obj_t* RowLayout;
+	DockBar DockBar;
+#if 0
+	lv_obj_t* DockBar;
 	lv_obj_t* ButtonHomePage;
 	lv_obj_t* ButtonMusic;
 	lv_obj_t* ButtonClock;
 	lv_obj_t* ButtonSystemInfo;
 	lv_obj_t* ButtonSetting;
+#endif
+
 	/*
 		当前主题
 	*/

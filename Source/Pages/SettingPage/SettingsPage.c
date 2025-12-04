@@ -93,10 +93,6 @@ void CreateSettingsHomePage(SettingsPage* Page)
     Page->PageHome.LabelUpdate = CreateLabel(Page->PageHome.ButtonUpdate, 0, 0, w, 50, "Update", lv_color_hex3(0x00F));
 
     obj =  Page->PageHome.ButtonUpdate;
-    lv_obj_set_style_shadow_width(obj, 0, LV_STATE_DEFAULT);      // 默认状态
-    lv_obj_set_style_shadow_width(obj, 0, LV_STATE_PRESSED);      // 按下状态
-    lv_obj_set_style_shadow_width(obj, 0, LV_STATE_HOVERED);      // 悬停状态
-    lv_obj_set_style_shadow_width(obj, 0, LV_STATE_DISABLED);     // 禁用状态
 }
 
 Point2 GetThemePos(int LinearIndex, int w, int h, int padding)

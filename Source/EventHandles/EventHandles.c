@@ -91,18 +91,50 @@ void  CallbackClockTimeUp(lv_timer_t* e)
 	lv_obj_clear_flag(App->PageClock.start_button, LV_OBJ_FLAG_HIDDEN);
 }
 
+
+void  CallbackDockBarTimerStart(lv_event_t* e)
+{
+	lv_timer_reset(App->DockBarTimer);
+	lv_timer_resume(App->DockBarTimer);
+}
+
+void  CallbackDockBarTimerStop(lv_event_t* e)
+{
+	lv_timer_pause(App->DockBarTimer);
+}
+
+void  CallbackDockBarTimerUp(lv_timer_t* e)
+{
+	//lv_obj_add_flag(App->RowLayout, LV_OBJ_FLAG_HIDDEN);
+	lv_obj_set_style_bg_opa(App->RowLayout, LV_OPA_0, 0);
+}
+
 void  CallbackClockReturn(lv_event_t* e)
 {
 	lv_obj_add_flag(App->PageClock.TimeUpPageHandle, LV_OBJ_FLAG_HIDDEN);
 	lv_obj_clear_flag(App->PageClock.Handle, LV_OBJ_FLAG_HIDDEN);
 }
 
+void CallbackDockBarHovered(lv_event_t* e)
+{
+	lv_obj_t* obj = lv_event_get_target_obj(e);
+	if (lv_obj_has_state(obj, LV_STATE_HOVERED))
+	{
+		//lv_obj_clear_flag(App->RowLayout, LV_OBJ_FLAG_HIDDEN);
+		lv_obj_set_style_bg_opa(App->RowLayout, LV_OPA_COVER, 0);
+		printf("App->RowLayout hovered\n");
+	}
+}
+
 void  CallbackAutoHideDock(lv_event_t* e)
 {
 	lv_obj_t* obj = lv_event_get_target_obj(e);
 	App->Setings.AutoHideDock = false;
-	if (lv_obj_has_state(obj, LV_STATE_CHECKED))
+	CallbackDockBarTimerStop(e);
+	if (lv_obj_has_state(obj, LV_STATE_CHECKED)) {
 		App->Setings.AutoHideDock = true;
+		CallbackDockBarTimerStart(e);
+	}
 	printf("AutoHideDock: %d\n", App->Setings.AutoHideDock);
 }
 
@@ -110,8 +142,20 @@ void  CallbackShowDock(lv_event_t* e)
 {
 	lv_obj_t* obj = lv_event_get_target_obj(e);
 	App->Setings.ShowDock = false;
+	//lv_obj_add_flag(App->RowLayout, LV_OBJ_FLAG_HIDDEN);
+	/*
+	 * 透明代替隐藏
+	 */
+	lv_obj_set_style_bg_opa(App->RowLayout, LV_OPA_0,  0);
 	if (lv_obj_has_state(obj, LV_STATE_CHECKED))
+	{
 		App->Setings.ShowDock = true;
+		//lv_obj_clear_flag(App->RowLayout, LV_OBJ_FLAG_HIDDEN);
+		/*
+		 *	不透明代表显示
+		 */
+		lv_obj_set_style_bg_opa(App->RowLayout, LV_OPA_COVER,0);
+	}
 	printf("ShowDock: %d\n", App->Setings.ShowDock);
 }
 
@@ -336,6 +380,8 @@ void  CallbackLongPressed(lv_event_t* e)
 	}
 }
 
+
+
 void InitEventHandle()
 {
 	if (!App)
@@ -344,6 +390,10 @@ void InitEventHandle()
 		return;
 	}
 
+	/*
+	 * Docker Bar
+	 */
+	lv_obj_add_event_cb(App->RowLayout, CallbackDockBarHovered, LV_EVENT_HOVER_OVER, NULL);
 	/*
 		�����¼�
 	*/
@@ -383,6 +433,9 @@ void InitEventHandle()
 
 	App->VolumeTimer = lv_timer_create(&CallbackVoulueTimeOut, 5000, NULL);
 	lv_timer_pause(App->VolumeTimer);
+
+	App->DockBarTimer = lv_timer_create(&CallbackDockBarTimerUp, 5000, NULL);
+	lv_timer_pause(App->DockBarTimer);
 
 	/*
 		����ҳ

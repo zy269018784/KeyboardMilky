@@ -71,6 +71,10 @@ typedef struct
 	lv_timer_t* Clock;
 	lv_timer_t* VolumeTimer;
 	/*
+	 * dock计时器
+	 */
+	lv_timer_t* DockBarTimer;
+	/*
 	 *
 	 */
 	lv_color_t color1;

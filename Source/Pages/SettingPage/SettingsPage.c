@@ -62,22 +62,41 @@ void CreateSettingsPage(SettingsPage* Page, lv_obj_t* Parent)
 
 void CreateSettingsHomePage(SettingsPage* Page)
 {
-    Page->PageHome.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
+    lv_obj_t *obj = NULL;
+    Page->PageHome.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), App->color1);
 
-    int32_t w = LV_PCT(100);
-    Page->PageHome.ButtonWallpapper = CreateButton(Page->PageHome.Handle, 0, 0, w, 50, lv_color_hex3(0xF0F));
+    int32_t w = 480 - 30 * 2;
+    int x = 30;
+    Page->PageHome.ButtonWallpapper = CreateButton(Page->PageHome.Handle, x, 0, w, 50, App->color1);
+    lv_obj_add_style(Page->PageHome.ButtonWallpapper, &App->HoveredStyle, LV_STATE_HOVERED);
     Page->PageHome.LabelWallpapper = CreateLabel(Page->PageHome.ButtonWallpapper, 0, 0, w, 50, "Wallpapper", lv_color_hex3(0xF00));
-    lv_obj_set_style_text_align(Page->PageHome.LabelWallpapper, LV_TEXT_ALIGN_CENTER, 0);
-    Page->PageHome.ButtonTheme = CreateButton(Page->PageHome.Handle, 0, 50, w, 50, lv_color_hex3(0x00F));
+    //lv_obj_set_style_text_align(Page->PageHome.LabelWallpapper, LV_TEXT_ALIGN_CENTER, 0);
+
+    Page->PageHome.ButtonTheme = CreateButton(Page->PageHome.Handle, x, 50, w, 50, App->color1);
+    lv_obj_add_style(Page->PageHome.ButtonTheme, &App->HoveredStyle, LV_STATE_HOVERED);
     Page->PageHome.LabelTheme = CreateLabel(Page->PageHome.ButtonTheme, 0, 0, w, 50, "Theme", lv_color_hex3(0x00F));
-    Page->PageHome.ButtonDock = CreateButton(Page->PageHome.Handle, 0, 100, w, 50, lv_color_hex3(0x00F));
+
+    Page->PageHome.ButtonDock = CreateButton(Page->PageHome.Handle, x, 100, w, 50, App->color1);
+    lv_obj_add_style(Page->PageHome.ButtonDock, &App->HoveredStyle, LV_STATE_HOVERED);
     Page->PageHome.LabelDock = CreateLabel(Page->PageHome.ButtonDock, 0, 0, w, 50, "Dock", lv_color_hex3(0x00F));
-    Page->PageHome.ButtonClock = CreateButton(Page->PageHome.Handle, 0, 150, w, 50, lv_color_hex3(0x00F));
+
+    Page->PageHome.ButtonClock = CreateButton(Page->PageHome.Handle, x, 150, w, 50, App->color1);
+    lv_obj_add_style(Page->PageHome.ButtonClock, &App->HoveredStyle, LV_STATE_HOVERED);
     Page->PageHome.LabelClock = CreateLabel(Page->PageHome.ButtonClock, 0, 0, w, 50, "Clock", lv_color_hex3(0x00F));
-    Page->PageHome.ButtonOther = CreateButton(Page->PageHome.Handle, 0, 200, w, 50, lv_color_hex3(0x00F));
+
+    Page->PageHome.ButtonOther = CreateButton(Page->PageHome.Handle, x, 200, w, 50, App->color1);
+    lv_obj_add_style(Page->PageHome.ButtonOther, &App->HoveredStyle, LV_STATE_HOVERED);
     Page->PageHome.LabelOther = CreateLabel(Page->PageHome.ButtonOther, 0, 0, w, 50, "Other", lv_color_hex3(0x00F));
-    Page->PageHome.ButtonUpdate = CreateButton(Page->PageHome.Handle, 0, 250, w, 50, lv_color_hex3(0x00F));
+
+    Page->PageHome.ButtonUpdate = CreateButton(Page->PageHome.Handle, x, 250, w, 50, App->color1);
+    lv_obj_add_style(Page->PageHome.ButtonUpdate, &App->HoveredStyle, LV_STATE_HOVERED);
     Page->PageHome.LabelUpdate = CreateLabel(Page->PageHome.ButtonUpdate, 0, 0, w, 50, "Update", lv_color_hex3(0x00F));
+
+    obj =  Page->PageHome.ButtonUpdate;
+    lv_obj_set_style_shadow_width(obj, 0, LV_STATE_DEFAULT);      // 默认状态
+    lv_obj_set_style_shadow_width(obj, 0, LV_STATE_PRESSED);      // 按下状态
+    lv_obj_set_style_shadow_width(obj, 0, LV_STATE_HOVERED);      // 悬停状态
+    lv_obj_set_style_shadow_width(obj, 0, LV_STATE_DISABLED);     // 禁用状态
 }
 
 Point2 GetThemePos(int LinearIndex, int w, int h, int padding)

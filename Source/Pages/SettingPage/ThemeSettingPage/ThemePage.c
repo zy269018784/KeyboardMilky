@@ -7,7 +7,7 @@
     https://blog.csdn.net/m0_74676415/article/details/144867497
 */ 
 
-
+#include  "Application.h"
 void CreateThemePage(ThemePage* Page, lv_obj_t* Parent, const char* Title, int X, int Y, int W, int H, void* Pixels)
 {
     //Page->Parent = Parent;
@@ -58,7 +58,7 @@ void CreateSettingsThemePage(SettingsPage* Page)
     Point2 ReturnRowSize = { 480,  60 };
     Point2 ContentRowPos = { 0,    ReturnRowPos.y + ReturnRowSize.y + padding };
     Point2 ContentRowSize = { 480,  480 - 3 * padding - ReturnRowSize.y };
-    Page->PageTheme.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
+    Page->PageTheme.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), App->color1);
 #if 0
     /*
         H1

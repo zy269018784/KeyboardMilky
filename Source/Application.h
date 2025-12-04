@@ -77,6 +77,7 @@ typedef struct
 	lv_color_t color2;
 	lv_color_t color3;
 	lv_color_t color4;
+	lv_color_t HoveredColor;
 
 	lv_style_t style1;
 	lv_style_t style2;
@@ -84,6 +85,7 @@ typedef struct
 
 	lv_style_t WhiteStyle;
 	lv_style_t BGStyle;
+	lv_style_t HoveredStyle;
 }Application;
 
 

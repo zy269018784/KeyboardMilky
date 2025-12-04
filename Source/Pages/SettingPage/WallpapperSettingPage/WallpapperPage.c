@@ -2,7 +2,7 @@
 #include "Widgets/Widget.h"
 #include "Util/Image.h"
 #include "../SettingsPage.h"
-
+#include "Application.h"
 void CreateWallpapperPage(WallpapperPage* Page, lv_obj_t* Parent, int X, int Y, int W, int H, void* Pixels)
 {
     /*---------------------------------------------------------------------*/
@@ -33,7 +33,7 @@ void CreateSettingsWallpapperPage(SettingsPage* Page)
     Point2 ContentRowPos = { 0,    ReturnRowPos.y + ReturnRowSize.y + padding };
     Point2 ContentRowSize = { 480,  480 - 3 * padding - ReturnRowSize.y };
 
-    Page->PageWallpapper.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
+    Page->PageWallpapper.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), App->color1);
     //  Page->PageWallpapper.Label = CreateLabel(Page->PageWallpapper.Handle, 0, 0, LV_PCT(100), 50, "PageWallpapper", lv_color_hex3(0xF00));
 #if 0
     Page->PageWallpapper.ReturnRow = CreateBase(Page->Handle, ReturnRowPos.x, ReturnRowPos.y, ReturnRowSize.x, ReturnRowSize.y, lv_color_hex3(0x0F0));

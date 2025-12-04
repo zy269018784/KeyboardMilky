@@ -7,9 +7,12 @@ void CreateSettingsDockPage(SettingsPage* Page)
 {
     lv_obj_t *obj = NULL;
 
-    Page->PageDock.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), lv_color_hex3(0x0F0));
+    Page->PageDock.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), App->color1);
 
-    Page->PageDock.LabelShowDock = CreateLabel(Page->PageDock.Handle, 6, 100, 100, 20, "Show Dock", lv_color_hex3(0xFF0));
+    Page->PageDock.LabelShowDock = CreateLabel(Page->PageDock.Handle, 6, 100, 100, 20, "Enable Dock", lv_color_hex3(0xFF0));
+    lv_obj_add_style(Page->PageDock.LabelShowDock, &App->WhiteStyle, 0);
+
+
     Page->PageDock.SwitchShowDock = CreateSwitch(Page->PageDock.Handle, 200, 100, 200, 20, lv_color_hex3(0xFF0));
     obj = Page->PageDock.SwitchShowDock ;
     lv_obj_set_style_radius(obj, 10, 0);
@@ -22,6 +25,8 @@ void CreateSettingsDockPage(SettingsPage* Page)
     lv_obj_set_style_border_width(obj, 2, 0);
 
     Page->PageDock.LabelAutoHideDock = CreateLabel(Page->PageDock.Handle, 6, 140, 200, 20, "Auto Hide Dock", lv_color_hex3(0xFF0));
+    lv_obj_add_style(Page->PageDock.LabelAutoHideDock , &App->WhiteStyle, 0);
+
     Page->PageDock.SwitchAutoHideDock = CreateSwitch(Page->PageDock.Handle, 200, 140, 200, 20, lv_color_hex3(0xFF0));
     obj = Page->PageDock.SwitchAutoHideDock;
     lv_obj_set_style_radius(obj, 10, 0);

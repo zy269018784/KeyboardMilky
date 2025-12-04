@@ -5,10 +5,8 @@
 #include "API/API.h"
 void CreateSettingsOtherPage(SettingsPage* Page)
 {
-
     lv_obj_t *obj = NULL;
-    lv_color_t color = App->color1;
-    Page->PageOther.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), color);
+    Page->PageOther.Handle = CreateBase(Page->Handle, 0, 0, LV_PCT(100), LV_PCT(100), App->color1);
  
     int y;
     y = Page->ReturnRowSize.y;
@@ -61,6 +59,6 @@ void CreateSettingsOtherPage(SettingsPage* Page)
     Page->PageOther.ButtonFactoryReset = CreateButton(Page->PageOther.Handle, 180, y,        120, 50, App->color1);
     Page->PageOther.LabelFactoryReset = CreateLabel(Page->PageOther.ButtonFactoryReset, 0, 0, LV_PCT(100), LV_PCT(100), "FactoryReset", lv_color_hex3(0xF00));
     obj = Page->PageOther.LabelFactoryReset;
-    lv_obj_add_style(obj, &App->WhiteStyle, 0);
+    lv_obj_add_style(obj, &App->style4, 0);
     ResetOtherSettingPage(&Page->PageOther);
 }

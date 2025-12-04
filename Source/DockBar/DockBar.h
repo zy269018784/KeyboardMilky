@@ -14,11 +14,24 @@ typedef struct {
 typedef struct {
     lv_obj_t * Handle;
 
+    lv_obj_t* IConHomePage;
     lv_obj_t* ButtonHomePage;
+    lv_obj_t* LabelHomePage;
+
+    lv_obj_t* IConHomeMusic;
     lv_obj_t* ButtonMusic;
+    lv_obj_t* LabelMusic;
+
+    lv_obj_t* IConHomeClock;
     lv_obj_t* ButtonClock;
+    lv_obj_t* LabelClock;
+
     lv_obj_t* ButtonSystemInfo;
     lv_obj_t* ButtonSetting;
+    lv_obj_t* ButtonCaps;
+    lv_obj_t* ButtonVolumeMutex;
+
+
 }DockBarTheme2;
 
 void CreateDockBarTheme1(DockBar *Bar, lv_obj_t *Parent, Theme *CurrentTheme);
